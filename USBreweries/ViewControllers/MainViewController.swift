@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    
+    // MARK: - @IBAction
     @IBAction func fetchButtonTapped() {
         fetchBreweries()
     }
@@ -46,8 +46,9 @@ class MainViewController: UIViewController {
 
 }
 
-// MARK: - Networking
+// MARK: - extension
 extension MainViewController {
+    
     private func fetchBreweries() {
         guard let url = URL(string: "https://api.openbrewerydb.org/breweries?by_state=maine&by_city=portland") else { return }
         
