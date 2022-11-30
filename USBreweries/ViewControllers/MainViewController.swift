@@ -10,9 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBAction func fetchButtonTapped() {
         fetchBreweries()
     }
     
@@ -21,7 +19,7 @@ class MainViewController: UIViewController {
         DispatchQueue.main.async {
             let alert = UIAlertController(
                 title: "Success",
-                message: "You can see the results in the Console",
+                message: "You can see the results in your Console",
                 preferredStyle: .alert
             )
             
@@ -35,7 +33,7 @@ class MainViewController: UIViewController {
         DispatchQueue.main.async {
             let alert = UIAlertController(
                 title: "Failed",
-                message: "You can see error in the Debug aria",
+                message: "You can see error in your Console",
                 preferredStyle: .alert
             )
             
