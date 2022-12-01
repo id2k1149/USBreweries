@@ -7,6 +7,29 @@
 
 import UIKit
 
+enum Alert: String {
+    case successAlert
+    case failedAlert
+    
+    var title: String {
+        switch self {
+        case .successAlert:
+            return "Success"
+        case .failedAlert:
+            return "Failed"
+        }
+    }
+    
+    var message: String {
+        switch self {
+        case .successAlert:
+            return "You can see the results in the Debug aria"
+        case .failedAlert:
+            return "You can see error in the Debug aria"
+        }
+    }
+}
+
 class MainViewController: UIViewController {
     
     // MARK: - @IBAction
@@ -15,42 +38,26 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Private Methods
-    private func successAlert() {
+    private func showAlert(alert: Alert) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(
-                title: "Success",
-                message: "You can see the results in your Console",
+            let alert = UIAlertController (
+                title: alert.title,
+                message: alert.message,
                 preferredStyle: .alert
             )
-            
             let okAction = UIAlertAction(title: "OK", style: .default)
-            alert.addAction(okAction)
-            self.present(alert, animated: true)
+            alert.addAction (okAction)
+            self.present (alert, animated: true)
         }
     }
-    
-    private func failedAlert() {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(
-                title: "Failed",
-                message: "You can see error in your Console",
-                preferredStyle: .alert
-            )
-            
-            let okAction = UIAlertAction(title: "OK", style: .default)
-            alert.addAction(okAction)
-            self.present(alert, animated: true)
-        }
-    }
-
-
 }
 
 // MARK: - extension
 extension MainViewController {
     
     private func fetchBreweries() {
-        guard let url = URL(string: "https://api.openbrewerydb.org/breweries?by_state=maine&by_city=portland") else { return }
+        guard let url = URL(string: "https://api.openbrewerydb.org/breweries?by_state=maine&by_city=portland")
+        else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {
@@ -66,10 +73,10 @@ extension MainViewController {
                     brewery.printAllValues()
                     print("***********")
                 }
-                self.successAlert()
+                self.showAlert(alert: Alert.successAlert)
             } catch {
                 print(error.localizedDescription)
-                self.failedAlert()
+                self.showAlert(alert: Alert.failedAlert)
             }
             
         }.resume()
