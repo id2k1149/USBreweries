@@ -62,37 +62,8 @@ extension MainViewController {
             
             do {
                 let breweries = try jsonDecoder.decode([Brewery].self, from: data)
-
                 breweries.forEach { brewery in
-                    guard let id = brewery.id else { return }
-                    print("id: \(id)")
-                    guard let name = brewery.name else { return }
-                    print("name: \(name)")
-                    guard let brewery_type = brewery.brewery_type else { return }
-                    print("brewery_type: \(brewery_type)")
-                    guard let street = brewery.street else { return }
-                    print("street: \(street)")
-                    guard let city = brewery.city else { return }
-                    print("city: \(city)")
-                    guard let state = brewery.state else { return }
-                    print("state: \(state)")
-                    guard let postal_code = brewery.postal_code else { return }
-                    print("postal_code: \(postal_code)")
-                    guard let country = brewery.country else { return }
-                    print("country: \(country)")
-                    guard let longitude = brewery.longitude else { return }
-                    print("longitude: \(longitude)")
-                    guard let latitude = brewery.latitude else { return }
-                    print("latitude: \(latitude)")
-                    guard let phone = brewery.phone else { return }
-                    print("phone: \(phone)")
-                    guard let website_url = brewery.website_url else { return }
-                    print("website_url: \(website_url)")
-                    guard let updated_at = brewery.updated_at else { return }
-                    print("updated_at: \(updated_at)")
-                    guard let created_at = brewery.created_at else { return }
-                    print("created_at: \(created_at)")
-                    
+                    brewery.printAllValues()
                     print("***********")
                 }
                 self.successAlert()
