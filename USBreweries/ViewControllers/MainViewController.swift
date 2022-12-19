@@ -11,6 +11,8 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var startScreenView: UIView!
     
+    let networkManager = NetworkManager()
+    
     // MARK: - override func
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,26 +21,22 @@ class MainViewController: UIViewController {
     
     // MARK: - @IBAction
     @IBAction func fetchButtonTapped() {
-        fetchBreweries()
+        networkManager.fetchBreweries(forCity: "Boston")
     }
     
     @IBAction func searchButtonTapped(_ sender: UIButton) {
         self.citySearchAlertController(withTitle: "Enter city name",
                                        message: nil,
                                        style: .alert) {[unowned self] city in
-//            self.networkWeatherManager.fetchCurrentWeather(forRequestType: .cityName(city: city))
-            print(city)
+            networkManager.fetchBreweries(forCity: city)
         }
     }
-    
 }
 
 // MARK: - extension
 extension MainViewController {
-    
     private func updateUI() {
         guard let background = UIImage(named: "start-screen-background") else { return }
         startScreenView.backgroundColor = UIColor(patternImage: background)
     }
-    
 }

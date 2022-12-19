@@ -70,10 +70,10 @@ extension MainViewController {
         let search = UIAlertAction(title: "Search", style: .default) { action in
             let textField = alertController.textFields?.first
             guard let cityName = textField?.text else { return }
+            
             if cityName != "" {
                 let city = cityName.split(separator: " ").joined(separator: "%20")
                 completionHandler(city)
-                
             }
         }
         

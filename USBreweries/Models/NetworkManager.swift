@@ -1,16 +1,16 @@
 //
-//  MainViewController+fetchBreweries.swift
+//  NetworkManager.swift
 //  USBreweries
 //
 //  Created by Max Franz Immelmann on 12/19/22.
 //
 
-import UIKit
+import Foundation
 
-extension MainViewController {
-    
-    func fetchBreweries() {
-        guard let url = URL(string: "https://api.openbrewerydb.org/breweries?by_state=maine&by_city=portland")
+struct NetworkManager {
+    func fetchBreweries(forCity city: String) {
+        
+        guard let url = URL(string: "https://api.openbrewerydb.org/breweries?by_city=\(city)")
         else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
@@ -27,12 +27,14 @@ extension MainViewController {
                     brewery.printAllValues()
                     print("***********")
                 }
-                self.showAlert(alert: Alert.successAlert)
+//                showAlert(alert: MainViewController.Alert.successAlert)
+                
             } catch {
                 print(error.localizedDescription)
-                self.showAlert(alert: Alert.failedAlert)
+//                MainViewController.showAlert(alert: MainViewController.Alert.failedAlert)
             }
             
         }.resume()
+        
     }
 }
