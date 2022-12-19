@@ -23,7 +23,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="222"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mug.fill" translatesAutoresizingMaskIntoConstraints="NO" id="yex-82-AjP">
-                                                <rect key="frame" x="70" y="11" width="200" height="200"/>
+                                                <rect key="frame" x="71.5" y="11" width="200" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="8HV-28-ne2"/>
                                                     <constraint firstAttribute="height" constant="200" id="MH9-0s-hin"/>
@@ -32,8 +32,8 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <constraints>
-                                            <constraint firstItem="yex-82-AjP" firstAttribute="leading" secondItem="Dwh-WT-Cz6" secondAttribute="leading" constant="70" id="CBY-Mx-259"/>
                                             <constraint firstItem="yex-82-AjP" firstAttribute="height" secondItem="Dwh-WT-Cz6" secondAttribute="height" multiplier="0.9" id="Msc-jf-4V9"/>
+                                            <constraint firstItem="yex-82-AjP" firstAttribute="centerX" secondItem="Dwh-WT-Cz6" secondAttribute="centerX" id="ejV-aZ-Mmk"/>
                                             <constraint firstItem="yex-82-AjP" firstAttribute="centerY" secondItem="Dwh-WT-Cz6" secondAttribute="centerY" id="hup-ns-oKG"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="s3v-CF-fDy"/>
                                         </constraints>
@@ -46,17 +46,17 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BTR-Qt-Mmn" userLabel="ViewTwo">
                                         <rect key="frame" x="0.0" y="242" width="343" height="67"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="uWO-Ym-d54">
-                                                <rect key="frame" x="25" y="3.5" width="293" height="60.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uWO-Ym-d54">
+                                                <rect key="frame" x="13.5" y="3.5" width="316" height="60.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breweries in any US city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVB-WH-S3e">
-                                                        <rect key="frame" x="0.0" y="17" width="227.5" height="26.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                        <rect key="frame" x="0.0" y="17" width="245.5" height="26.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6E0-rp-O0b">
-                                                        <rect key="frame" x="232.5" y="0.5" width="60.5" height="59.5"/>
+                                                        <rect key="frame" x="255.5" y="0.5" width="60.5" height="59.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="6E0-rp-O0b" secondAttribute="height" id="JuC-Af-LBX"/>
                                                         </constraints>
@@ -85,7 +85,9 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="BTR-Qt-Mmn" firstAttribute="width" secondItem="Dwh-WT-Cz6" secondAttribute="width" id="24f-RJ-YpX"/>
+                                    <constraint firstItem="Dwh-WT-Cz6" firstAttribute="leading" secondItem="Nuy-Qh-WD5" secondAttribute="leading" id="DlN-89-Qnt"/>
                                     <constraint firstItem="BTR-Qt-Mmn" firstAttribute="height" secondItem="Dwh-WT-Cz6" secondAttribute="height" multiplier="0.3" id="LNO-W3-cJd"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dwh-WT-Cz6" secondAttribute="trailing" id="ioP-jf-oCw"/>
                                 </constraints>
                             </stackView>
                         </subviews>
