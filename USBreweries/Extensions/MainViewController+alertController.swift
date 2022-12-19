@@ -9,6 +9,44 @@ import UIKit
 
 extension MainViewController {
     
+    enum Alert: String {
+        case successAlert
+        case failedAlert
+        
+        var title: String {
+            switch self {
+            case .successAlert:
+                return "Success"
+            case .failedAlert:
+                return "Failed"
+            }
+        }
+        
+        var message: String {
+            switch self {
+            case .successAlert:
+                return "You can see the results in the Debug aria"
+            case .failedAlert:
+                return "You can see error in the Debug aria"
+            }
+        }
+    }
+    
+    func showAlert(alert: Alert) {
+        DispatchQueue.main.async {
+            
+            let alertController = UIAlertController (
+                title: alert.title,
+                message: alert.message,
+                preferredStyle: .alert
+            )
+            
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alertController.addAction (okAction)
+            self.present (alertController, animated: true)
+        }
+    }
+    
     func citySearchAlertController(withTitle title: String?,
                                       message: String?,
                                       style: UIAlertController.Style,
@@ -46,19 +84,5 @@ extension MainViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    func showAlert(alert: Alert) {
-        DispatchQueue.main.async {
-            
-            let alertController = UIAlertController (
-                title: alert.title,
-                message: alert.message,
-                preferredStyle: .alert
-            )
-            
-            let okAction = UIAlertAction(title: "OK", style: .default)
-            alertController.addAction (okAction)
-            self.present (alertController, animated: true)
-        }
-    }
 }
 

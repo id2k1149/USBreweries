@@ -14,6 +14,7 @@
 		5026227E2937A3D300B5AD11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5026227D2937A3D300B5AD11 /* Assets.xcassets */; };
 		502622812937A3D300B5AD11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5026227F2937A3D300B5AD11 /* LaunchScreen.storyboard */; };
 		50A7CF7D2950F52000EDB39E /* MainViewController+alertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A7CF7C2950F52000EDB39E /* MainViewController+alertController.swift */; };
+		50A7CF7F2950FA9200EDB39E /* MainViewController+fetchBreweries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A7CF7E2950FA9200EDB39E /* MainViewController+fetchBreweries.swift */; };
 		50EEF21A2937A6FC00F61B85 /* Brewery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EEF2192937A6FC00F61B85 /* Brewery.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		502622802937A3D300B5AD11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		502622822937A3D300B5AD11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50A7CF7C2950F52000EDB39E /* MainViewController+alertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+alertController.swift"; sourceTree = "<group>"; };
+		50A7CF7E2950FA9200EDB39E /* MainViewController+fetchBreweries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+fetchBreweries.swift"; sourceTree = "<group>"; };
 		50EEF2192937A6FC00F61B85 /* Brewery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brewery.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				50A7CF7C2950F52000EDB39E /* MainViewController+alertController.swift */,
+				50A7CF7E2950FA9200EDB39E /* MainViewController+fetchBreweries.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				502622752937A3D200B5AD11 /* AppDelegate.swift in Sources */,
 				502622772937A3D200B5AD11 /* SceneDelegate.swift in Sources */,
 				50A7CF7D2950F52000EDB39E /* MainViewController+alertController.swift in Sources */,
+				50A7CF7F2950FA9200EDB39E /* MainViewController+fetchBreweries.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
