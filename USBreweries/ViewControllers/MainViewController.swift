@@ -20,10 +20,6 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - @IBAction
-    @IBAction func fetchButtonTapped() {
-        networkManager.fetchBreweries(forCity: "Boston")
-    }
-    
     @IBAction func searchButtonTapped(_ sender: UIButton) {
         self.citySearchAlertController(withTitle: "Enter city name",
                                        message: nil,

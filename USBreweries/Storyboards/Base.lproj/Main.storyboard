@@ -16,11 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Nuy-Qh-WD5">
-                                <rect key="frame" x="16" y="60" width="343" height="373"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Nuy-Qh-WD5">
+                                <rect key="frame" x="16" y="60" width="343" height="309"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dwh-WT-Cz6">
-                                        <rect key="frame" x="21.5" y="0.0" width="300" height="222"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dwh-WT-Cz6" userLabel="ViewOne">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="222"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mug.fill" translatesAutoresizingMaskIntoConstraints="NO" id="yex-82-AjP">
                                                 <rect key="frame" x="70" y="11" width="200" height="200"/>
@@ -35,6 +35,7 @@
                                             <constraint firstItem="yex-82-AjP" firstAttribute="leading" secondItem="Dwh-WT-Cz6" secondAttribute="leading" constant="70" id="CBY-Mx-259"/>
                                             <constraint firstItem="yex-82-AjP" firstAttribute="height" secondItem="Dwh-WT-Cz6" secondAttribute="height" multiplier="0.9" id="Msc-jf-4V9"/>
                                             <constraint firstItem="yex-82-AjP" firstAttribute="centerY" secondItem="Dwh-WT-Cz6" secondAttribute="centerY" id="hup-ns-oKG"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="s3v-CF-fDy"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -42,42 +43,49 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTa-Nf-2U6">
-                                        <rect key="frame" x="21.5" y="242" width="300" height="36"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BTR-Qt-Mmn" userLabel="ViewTwo">
+                                        <rect key="frame" x="0.0" y="242" width="343" height="67"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="uWO-Ym-d54">
+                                                <rect key="frame" x="25" y="3.5" width="293" height="60.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breweries in any US city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVB-WH-S3e">
+                                                        <rect key="frame" x="0.0" y="17" width="227.5" height="26.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6E0-rp-O0b">
+                                                        <rect key="frame" x="232.5" y="0.5" width="60.5" height="59.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="6E0-rp-O0b" secondAttribute="height" id="JuC-Af-LBX"/>
+                                                        </constraints>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" backgroundImage="magnifyingglass.circle.fill" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="searchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mLB-GQ-utk"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="bTx-qa-JJi"/>
+                                            <constraint firstItem="uWO-Ym-d54" firstAttribute="centerY" secondItem="BTR-Qt-Mmn" secondAttribute="centerY" id="4gl-in-cfW"/>
+                                            <constraint firstAttribute="height" secondItem="6E0-rp-O0b" secondAttribute="height" multiplier="1.1" id="Dw6-cZ-kRc"/>
+                                            <constraint firstItem="uWO-Ym-d54" firstAttribute="centerX" secondItem="BTR-Qt-Mmn" secondAttribute="centerX" id="Zaj-Y3-5aM"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Fetch breweries in Portland(ME)">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="fetchButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="hCN-9r-kWG"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6E0-rp-O0b">
-                                        <rect key="frame" x="134" y="298.5" width="75" height="74"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="9aJ-go-QKX"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="RJO-x7-Nq7"/>
-                                        </constraints>
-                                        <color key="tintColor" systemColor="systemYellowColor"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" backgroundImage="magnifyingglass.circle.fill" catalog="system"/>
-                                        <connections>
-                                            <action selector="searchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mLB-GQ-utk"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Dwh-WT-Cz6" firstAttribute="width" secondItem="vTa-Nf-2U6" secondAttribute="width" id="Y98-iN-a4r"/>
+                                    <constraint firstItem="BTR-Qt-Mmn" firstAttribute="width" secondItem="Dwh-WT-Cz6" secondAttribute="width" id="24f-RJ-YpX"/>
+                                    <constraint firstItem="BTR-Qt-Mmn" firstAttribute="height" secondItem="Dwh-WT-Cz6" secondAttribute="height" multiplier="0.3" id="LNO-W3-cJd"/>
                                 </constraints>
                             </stackView>
                         </subviews>
