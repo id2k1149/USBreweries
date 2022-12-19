@@ -13,6 +13,7 @@
 		5026227C2937A3D200B5AD11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5026227A2937A3D200B5AD11 /* Main.storyboard */; };
 		5026227E2937A3D300B5AD11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5026227D2937A3D300B5AD11 /* Assets.xcassets */; };
 		502622812937A3D300B5AD11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5026227F2937A3D300B5AD11 /* LaunchScreen.storyboard */; };
+		50A7CF7D2950F52000EDB39E /* MainViewController+alertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A7CF7C2950F52000EDB39E /* MainViewController+alertController.swift */; };
 		50EEF21A2937A6FC00F61B85 /* Brewery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EEF2192937A6FC00F61B85 /* Brewery.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		5026227D2937A3D300B5AD11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		502622802937A3D300B5AD11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		502622822937A3D300B5AD11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50A7CF7C2950F52000EDB39E /* MainViewController+alertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+alertController.swift"; sourceTree = "<group>"; };
 		50EEF2192937A6FC00F61B85 /* Brewery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brewery.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,6 +60,7 @@
 		502622732937A3D200B5AD11 /* USBreweries */ = {
 			isa = PBXGroup;
 			children = (
+				50A7CF7B2950F4ED00EDB39E /* Extensions */,
 				50EEF2182937A6CF00F61B85 /* Models */,
 				50EEF2172937A6BC00F61B85 /* ViewControllers */,
 				50EEF2162937A6AB00F61B85 /* Storyboards */,
@@ -66,6 +69,14 @@
 				502622822937A3D300B5AD11 /* Info.plist */,
 			);
 			path = USBreweries;
+			sourceTree = "<group>";
+		};
+		50A7CF7B2950F4ED00EDB39E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				50A7CF7C2950F52000EDB39E /* MainViewController+alertController.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		50EEF2152937A69400F61B85 /* Delegates */ = {
@@ -177,6 +188,7 @@
 				502622792937A3D200B5AD11 /* MainViewController.swift in Sources */,
 				502622752937A3D200B5AD11 /* AppDelegate.swift in Sources */,
 				502622772937A3D200B5AD11 /* SceneDelegate.swift in Sources */,
+				50A7CF7D2950F52000EDB39E /* MainViewController+alertController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

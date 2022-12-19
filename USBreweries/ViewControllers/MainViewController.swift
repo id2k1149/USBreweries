@@ -46,19 +46,16 @@ class MainViewController: UIViewController {
         fetchBreweries()
     }
     
-    // MARK: - Private Methods
-    private func showAlert(alert: Alert) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController (
-                title: alert.title,
-                message: alert.message,
-                preferredStyle: .alert
-            )
-            let okAction = UIAlertAction(title: "OK", style: .default)
-            alert.addAction (okAction)
-            self.present (alert, animated: true)
+    
+    @IBAction func searchButtonTapped(_ sender: UIButton) {
+        self.citySearchAlertController(withTitle: "Enter city name",
+                                       message: nil,
+                                       style: .alert) {[unowned self] city in
+//            self.networkWeatherManager.fetchCurrentWeather(forRequestType: .cityName(city: city))
+            print(city)
         }
     }
+    
 }
 
 // MARK: - extension
