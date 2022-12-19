@@ -12,38 +12,79 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="USBreweries" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="Start Screen View">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTa-Nf-2U6">
-                                <rect key="frame" x="10" y="100" width="300" height="36"/>
-                                <color key="backgroundColor" systemColor="tintColor"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Nuy-Qh-WD5">
+                                <rect key="frame" x="16" y="60" width="300" height="373"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dwh-WT-Cz6">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="222"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mug.fill" translatesAutoresizingMaskIntoConstraints="NO" id="yex-82-AjP">
+                                                <rect key="frame" x="70" y="11" width="200" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="8HV-28-ne2"/>
+                                                    <constraint firstAttribute="height" constant="200" id="MH9-0s-hin"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <constraints>
+                                            <constraint firstItem="yex-82-AjP" firstAttribute="leading" secondItem="Dwh-WT-Cz6" secondAttribute="leading" constant="70" id="CBY-Mx-259"/>
+                                            <constraint firstAttribute="trailing" secondItem="yex-82-AjP" secondAttribute="trailing" constant="30" id="G2s-ni-olH"/>
+                                            <constraint firstItem="yex-82-AjP" firstAttribute="height" secondItem="Dwh-WT-Cz6" secondAttribute="height" multiplier="0.9" id="Msc-jf-4V9"/>
+                                            <constraint firstItem="yex-82-AjP" firstAttribute="centerY" secondItem="Dwh-WT-Cz6" secondAttribute="centerY" id="hup-ns-oKG"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTa-Nf-2U6">
+                                        <rect key="frame" x="0.0" y="242" width="300" height="36"/>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="bTx-qa-JJi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Fetch breweries in Portland(ME)">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="fetchButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="hCN-9r-kWG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6E0-rp-O0b">
+                                        <rect key="frame" x="112.5" y="298.5" width="75" height="74"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="9aJ-go-QKX"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="RJO-x7-Nq7"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemYellowColor"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="magnifyingglass.circle.fill" catalog="system"/>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="bTx-qa-JJi"/>
+                                    <constraint firstItem="Dwh-WT-Cz6" firstAttribute="width" secondItem="vTa-Nf-2U6" secondAttribute="width" id="Y98-iN-a4r"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Fetch breweries in Portland(ME)">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="fetchButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="hCN-9r-kWG"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vTa-Nf-2U6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="Wfd-Ww-1JI"/>
-                            <constraint firstItem="vTa-Nf-2U6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cgp-uF-qJT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Nuy-Qh-WD5" secondAttribute="trailing" constant="16" id="hu2-Zs-KTS"/>
+                            <constraint firstItem="Nuy-Qh-WD5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="o6H-un-sFO"/>
+                            <constraint firstItem="Nuy-Qh-WD5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="wUo-hU-0Le"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="startScreenView" destination="8bC-Xf-vdC" id="WxU-OD-U4a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -51,11 +92,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="mug.fill" width="1602" height="1849"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

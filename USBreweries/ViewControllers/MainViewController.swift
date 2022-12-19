@@ -32,6 +32,15 @@ enum Alert: String {
 
 class MainViewController: UIViewController {
     
+    
+    @IBOutlet weak var startScreenView: UIView!
+    
+    // MARK: - override func
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateUI()
+    }
+    
     // MARK: - @IBAction
     @IBAction func fetchButtonTapped() {
         fetchBreweries()
@@ -54,6 +63,12 @@ class MainViewController: UIViewController {
 
 // MARK: - extension
 extension MainViewController {
+    
+    private func updateUI() {
+        // set startBackgound
+        guard let background = UIImage(named: "start-screen-background") else { return }
+        startScreenView.backgroundColor = UIColor(patternImage: background)
+    }
     
     private func fetchBreweries() {
         guard let url = URL(string: "https://api.openbrewerydb.org/breweries?by_state=maine&by_city=portland")
