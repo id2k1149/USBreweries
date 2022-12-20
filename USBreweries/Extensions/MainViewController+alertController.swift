@@ -9,6 +9,7 @@ import UIKit
 
 extension MainViewController {
     
+    /*
     enum Alert: String {
         case successAlert
         case failedAlert
@@ -46,6 +47,7 @@ extension MainViewController {
             self.present (alertController, animated: true)
         }
     }
+    */
     
     func citySearchAlertController(withTitle title: String?,
                                       message: String?,
@@ -62,8 +64,9 @@ extension MainViewController {
             let cities = ["San Francisco",
                           "Los Angeles",
                           "New York",
-                          "Portland",
-                          "Boston"]
+                          "Boston",
+                          "Dallas",
+                          "Atlanta"]
             textField.placeholder = cities.randomElement()
         }
         
@@ -83,6 +86,4 @@ extension MainViewController {
         alertController.addAction(cancel)
         present(alertController, animated: true, completion: nil)
     }
-    
 }
-

@@ -35,7 +35,6 @@
                                             <constraint firstItem="yex-82-AjP" firstAttribute="height" secondItem="Dwh-WT-Cz6" secondAttribute="height" multiplier="0.9" id="Msc-jf-4V9"/>
                                             <constraint firstItem="yex-82-AjP" firstAttribute="centerX" secondItem="Dwh-WT-Cz6" secondAttribute="centerX" id="ejV-aZ-Mmk"/>
                                             <constraint firstItem="yex-82-AjP" firstAttribute="centerY" secondItem="Dwh-WT-Cz6" secondAttribute="centerY" id="hup-ns-oKG"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="s3v-CF-fDy"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -47,16 +46,16 @@
                                         <rect key="frame" x="0.0" y="242" width="343" height="67"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uWO-Ym-d54">
-                                                <rect key="frame" x="13.5" y="3.5" width="316" height="60.5"/>
+                                                <rect key="frame" x="10" y="3.5" width="323" height="60.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breweries in any US city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVB-WH-S3e">
-                                                        <rect key="frame" x="0.0" y="17" width="245.5" height="26.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fetch breweries" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVB-WH-S3e">
+                                                        <rect key="frame" x="0.0" y="17" width="252.5" height="26.5"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6E0-rp-O0b">
-                                                        <rect key="frame" x="255.5" y="0.5" width="60.5" height="59.5"/>
+                                                        <rect key="frame" x="262.5" y="0.5" width="60.5" height="59.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="6E0-rp-O0b" secondAttribute="height" id="JuC-Af-LBX"/>
                                                         </constraints>
@@ -72,8 +71,10 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="uWO-Ym-d54" secondAttribute="trailing" constant="10" id="1WZ-P1-6D4"/>
                                             <constraint firstItem="uWO-Ym-d54" firstAttribute="centerY" secondItem="BTR-Qt-Mmn" secondAttribute="centerY" id="4gl-in-cfW"/>
                                             <constraint firstAttribute="height" secondItem="6E0-rp-O0b" secondAttribute="height" multiplier="1.1" id="Dw6-cZ-kRc"/>
+                                            <constraint firstItem="uWO-Ym-d54" firstAttribute="leading" secondItem="BTR-Qt-Mmn" secondAttribute="leading" constant="10" id="Tvg-lw-zxO"/>
                                             <constraint firstItem="uWO-Ym-d54" firstAttribute="centerX" secondItem="BTR-Qt-Mmn" secondAttribute="centerX" id="Zaj-Y3-5aM"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -92,7 +93,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.29379251090000003" green="0.24983001939999999" blue="0.1883161984" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Nuy-Qh-WD5" secondAttribute="trailing" constant="16" id="hu2-Zs-KTS"/>
                             <constraint firstItem="Nuy-Qh-WD5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="o6H-un-sFO"/>
@@ -101,11 +102,58 @@
                     </view>
                     <connections>
                         <outlet property="startScreenView" destination="8bC-Xf-vdC" id="WxU-OD-U4a"/>
+                        <segue destination="cDI-Tj-aNH" kind="show" identifier="navigationControllerID" animates="NO" id="HuV-TI-Awi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-33" y="-199"/>
+            <point key="canvasLocation" x="-183" y="-221"/>
+        </scene>
+        <!--Breweries-->
+        <scene sceneID="W8t-mE-3fL">
+            <objects>
+                <tableViewController modalPresentationStyle="fullScreen" id="dVq-4Z-nGx" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="bTG-RT-WtG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="breweryID" id="8sP-Hz-IBI">
+                                <rect key="frame" x="0.0" y="50" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8sP-Hz-IBI" id="RNz-Ix-gda">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dVq-4Z-nGx" id="5kU-Qn-zmW"/>
+                            <outlet property="delegate" destination="dVq-4Z-nGx" id="mJP-U1-Ob2"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Breweries" id="5jw-zm-je1"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vnD-TJ-8Dr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="556" y="501"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fmF-Yf-1ml">
+            <objects>
+                <navigationController modalPresentationStyle="fullScreen" id="cDI-Tj-aNH" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="eA3-H8-MeR"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="vsz-fq-St3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dVq-4Z-nGx" kind="relationship" relationship="rootViewController" id="BXi-Ba-QoC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G4C-5g-q5c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="556" y="-224"/>
         </scene>
     </scenes>
     <resources>
