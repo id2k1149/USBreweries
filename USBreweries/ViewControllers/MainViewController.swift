@@ -21,12 +21,12 @@ class MainViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let viewControllers = segue.destination as? UINavigationController
+        guard let navigationVC = segue.destination as? UINavigationController
         else { return }
-        
-//        guard let userInfoVC = viewControllers.topViewController as? UserInfoViewController
-//        else { return }
-//        userInfoVC.user = user
+        guard let breweryTableVC = navigationVC.topViewController as? BreweryTableViewController
+        else { return }
+        guard let breweries = sender as? [Brewery] else { return }
+        breweryTableVC.breweries = breweries
     }
     
     // MARK: - @IBAction

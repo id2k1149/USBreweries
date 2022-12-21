@@ -15,6 +15,7 @@
 		502622812937A3D300B5AD11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5026227F2937A3D300B5AD11 /* LaunchScreen.storyboard */; };
 		50A7CF7D2950F52000EDB39E /* MainViewController+alertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A7CF7C2950F52000EDB39E /* MainViewController+alertController.swift */; };
 		50A7CF812950FD8200EDB39E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A7CF802950FD8200EDB39E /* NetworkManager.swift */; };
+		50C03E46295346580072D8D4 /* BreweryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C03E45295346580072D8D4 /* BreweryTableViewController.swift */; };
 		50EEF21A2937A6FC00F61B85 /* Brewery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EEF2192937A6FC00F61B85 /* Brewery.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		502622822937A3D300B5AD11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50A7CF7C2950F52000EDB39E /* MainViewController+alertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+alertController.swift"; sourceTree = "<group>"; };
 		50A7CF802950FD8200EDB39E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		50C03E45295346580072D8D4 /* BreweryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryTableViewController.swift; sourceTree = "<group>"; };
 		50EEF2192937A6FC00F61B85 /* Brewery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brewery.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				502622782937A3D200B5AD11 /* MainViewController.swift */,
+				50C03E45295346580072D8D4 /* BreweryTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				50A7CF812950FD8200EDB39E /* NetworkManager.swift in Sources */,
 				502622772937A3D200B5AD11 /* SceneDelegate.swift in Sources */,
 				50A7CF7D2950F52000EDB39E /* MainViewController+alertController.swift in Sources */,
+				50C03E46295346580072D8D4 /* BreweryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

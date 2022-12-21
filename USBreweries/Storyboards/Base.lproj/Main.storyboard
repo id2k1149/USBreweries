@@ -112,7 +112,7 @@
         <!--Breweries-->
         <scene sceneID="W8t-mE-3fL">
             <objects>
-                <tableViewController modalPresentationStyle="fullScreen" id="dVq-4Z-nGx" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="fullScreen" id="dVq-4Z-nGx" customClass="BreweryTableViewController" customModule="USBreweries" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="bTG-RT-WtG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -132,7 +132,9 @@
                             <outlet property="delegate" destination="dVq-4Z-nGx" id="mJP-U1-Ob2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Breweries" id="5jw-zm-je1"/>
+                    <navigationItem key="navigationItem" title="Breweries" id="5jw-zm-je1">
+                        <barButtonItem key="leftBarButtonItem" title="back" image="chevron.backward" catalog="system" id="46Q-KH-IaB"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnD-TJ-8Dr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -142,7 +144,9 @@
         <scene sceneID="fmF-Yf-1ml">
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="cDI-Tj-aNH" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="eA3-H8-MeR"/>
+                    <navigationItem key="navigationItem" id="eA3-H8-MeR">
+                        <barButtonItem key="backBarButtonItem" title="back" id="Zjx-zD-z6H"/>
+                    </navigationItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="vsz-fq-St3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -157,6 +161,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>
         <image name="mug.fill" width="1602" height="1849"/>
         <systemColor name="systemBackgroundColor">

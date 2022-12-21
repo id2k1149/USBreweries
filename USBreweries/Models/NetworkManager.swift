@@ -23,15 +23,14 @@ struct NetworkManager {
             
             do {
                 let breweries = try jsonDecoder.decode([Brewery].self, from: data)
+            
                 breweries.forEach { brewery in
                     brewery.printAllValues()
                     print("***********")
                 }
-//                showAlert(alert: MainViewController.Alert.successAlert)
                 
             } catch {
                 print(error.localizedDescription)
-//                MainViewController.showAlert(alert: MainViewController.Alert.failedAlert)
             }
             
         }.resume()
