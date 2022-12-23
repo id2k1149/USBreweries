@@ -9,8 +9,6 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var breweries: [Brewery] = []
-    
     // MARK: - @IBOutlet
     @IBOutlet weak var startScreenView: UIView!
     
@@ -34,7 +32,9 @@ class MainViewController: UIViewController {
         self.citySearchAlertController(withTitle: "Enter US city name",
                                        message: nil,
                                        style: .alert) {[unowned self] city in
-            fetchBreweries2(forCity: city)
+            networkManagerfetchesBreweries(forCity: city) { [self] breweriesUS in
+                performSegue(withIdentifier: "navigationControllerID", sender: breweriesUS)
+            }
         }
     }
 }
@@ -46,9 +46,11 @@ extension MainViewController {
         startScreenView.backgroundColor = UIColor(patternImage: background)
     }
     
-    private func fetchBreweries2(forCity city: String) {
-        NetworkManager.shared.fetchBreweries(forCity: city) { breweries in
-            self.breweries = breweries
+    private func networkManagerfetchesBreweries(forCity city: String,
+                                                completion: @escaping([Brewery]) -> Void)  {
+        
+        NetworkManager.shared.fetchBreweries(forCity: city) { breweriesUS in
+            completion(breweriesUS)
         }
     }
 }

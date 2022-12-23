@@ -26,11 +26,6 @@ class NetworkManager {
             do {
                 let jsonDecoder = JSONDecoder()
                 let breweries = try jsonDecoder.decode([Brewery].self, from: data)
-            
-                breweries.forEach { brewery in
-                    brewery.printAllValues()
-                    print("***********")
-                }
                 
                 DispatchQueue.main.async {
                     completion(breweries)

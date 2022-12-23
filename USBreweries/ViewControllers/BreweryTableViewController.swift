@@ -13,9 +13,11 @@ class BreweryTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("$$$$$$$$$")
         breweries.forEach { brewery in
             brewery.printAllValues()
         }
+        print("$$$$$$$$$")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
