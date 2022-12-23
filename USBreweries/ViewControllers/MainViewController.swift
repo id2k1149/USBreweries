@@ -9,10 +9,10 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    var breweries: [Brewery] = []
+    
     // MARK: - @IBOutlet
     @IBOutlet weak var startScreenView: UIView!
-    
-    let networkManager = NetworkManager()
     
     // MARK: - override func
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class MainViewController: UIViewController {
         self.citySearchAlertController(withTitle: "Enter US city name",
                                        message: nil,
                                        style: .alert) {[unowned self] city in
-            networkManager.fetchBreweries(forCity: city)
+            fetchBreweries2(forCity: city)
         }
     }
 }
@@ -44,5 +44,11 @@ extension MainViewController {
     private func updateUI() {
         guard let background = UIImage(named: "start-screen-background") else { return }
         startScreenView.backgroundColor = UIColor(patternImage: background)
+    }
+    
+    private func fetchBreweries2(forCity city: String) {
+        NetworkManager.shared.fetchBreweries(forCity: city) { breweries in
+            self.breweries = breweries
+        }
     }
 }

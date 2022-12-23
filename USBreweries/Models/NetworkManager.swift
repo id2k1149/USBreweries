@@ -7,8 +7,12 @@
 
 import Foundation
 
-struct NetworkManager {
-    func fetchBreweries(forCity city: String) {
+class NetworkManager {
+    static let shared = NetworkManager()
+    private init(){}
+    
+    func fetchBreweries(forCity city: String,
+                        completion: @escaping([Brewery]) -> Void) {
         
         guard let url = URL(string: "https://api.openbrewerydb.org/breweries?by_city=\(city)")
         else { return }
@@ -19,9 +23,8 @@ struct NetworkManager {
                 return
             }
             
-            let jsonDecoder = JSONDecoder()
-            
             do {
+                let jsonDecoder = JSONDecoder()
                 let breweries = try jsonDecoder.decode([Brewery].self, from: data)
             
                 breweries.forEach { brewery in
@@ -29,11 +32,14 @@ struct NetworkManager {
                     print("***********")
                 }
                 
+                DispatchQueue.main.async {
+                    completion(breweries)
+                }
+                
             } catch {
                 print(error.localizedDescription)
             }
             
         }.resume()
-        
     }
 }
