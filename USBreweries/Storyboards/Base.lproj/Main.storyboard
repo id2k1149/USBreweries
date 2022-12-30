@@ -109,7 +109,7 @@
             </objects>
             <point key="canvasLocation" x="-183" y="-221"/>
         </scene>
-        <!--Breweries-->
+        <!--Breweries in ...-->
         <scene sceneID="W8t-mE-3fL">
             <objects>
                 <tableViewController modalPresentationStyle="fullScreen" id="dVq-4Z-nGx" customClass="BreweryTableViewController" customModule="USBreweries" customModuleProvider="target" sceneMemberID="viewController">
@@ -132,9 +132,12 @@
                             <outlet property="delegate" destination="dVq-4Z-nGx" id="mJP-U1-Ob2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Breweries" id="5jw-zm-je1">
+                    <navigationItem key="navigationItem" title="Breweries in ..." id="5jw-zm-je1">
                         <barButtonItem key="leftBarButtonItem" title="back" image="chevron.backward" catalog="system" id="46Q-KH-IaB"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="cityLabel" destination="5jw-zm-je1" id="21w-ul-VTo"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnD-TJ-8Dr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

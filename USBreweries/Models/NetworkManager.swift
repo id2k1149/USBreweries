@@ -27,8 +27,12 @@ class NetworkManager {
                 let jsonDecoder = JSONDecoder()
                 let breweries = try jsonDecoder.decode([Brewery].self, from: data)
                 
+               let breweriesWithAddress = breweries.filter {
+                    !($0.street?.contains("N/A") ?? true)
+                    }
+                
                 DispatchQueue.main.async {
-                    completion(breweries)
+                    completion(breweriesWithAddress)
                 }
                 
             } catch {

@@ -39,8 +39,8 @@ struct Brewery: Decodable {
     }
 }
 
-struct WebsiteDesctiption: Decodable {
-    let breweries: [Brewery]?
-    let websiteDescription: String?
-    let websiteName: String?
-}
+//struct WebsiteDescription: Decodable {
+//    let breweries: [Brewery]?
+//    let websiteDescription: String?
+//    let websiteName: String?
+//}
