@@ -16,9 +16,9 @@ class BreweryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cityLabel.title = "\(breweries.first?.city ?? "???") breweries"
+        cityLabel.title = "\(breweries.first?.city ?? "???") (\(breweries.first?.state ?? "??")) breweries"
        
-//        print("$$$$$$$$$")
+        print("$$$$$$$$$")
 //
 //        breweries.forEach { brewery in
 //            print(type(of: brewery.street))
@@ -29,10 +29,11 @@ class BreweryTableViewController: UITableViewController {
 //        let breweriesFilter = breweries.filter {
 //            !($0.street?.contains("N/A") ?? true)
 //            }
-//        breweriesFilter.forEach { brewery in
-//            brewery.printAllValues()
-//        }
-//        print("$$$$$$$$$")
+        breweries.forEach { brewery in
+            brewery.printAllValues()
+            print("________")
+        }
+        print("$$$$$$$$$")
 
     }
 

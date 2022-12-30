@@ -11,11 +11,10 @@ class NetworkManager {
     static let shared = NetworkManager()
     private init(){}
     
-    func fetchBreweries(forCity city: String,
+    func fetchBreweries(forURL url: String,
                         completion: @escaping([Brewery]) -> Void) {
         
-        guard let url = URL(string: "https://api.openbrewerydb.org/breweries?by_city=\(city)")
-        else { return }
+        guard let url = URL(string: url) else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {

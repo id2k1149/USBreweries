@@ -32,7 +32,38 @@ class MainViewController: UIViewController {
         self.citySearchAlertController(withTitle: "Enter US city name",
                                        message: nil,
                                        style: .alert) {[unowned self] city in
-            networkManagerfetchesBreweries(forCity: city) { [self] breweriesUS in
+            
+            let url = "https://api.openbrewerydb.org/breweries?by_city=\(city)"
+            networkManagerfetchesBreweries(forURL: url) { [self] breweriesUS in
+                
+                var states: [String] = []
+                breweriesUS.forEach { brewery in
+
+                    if !states.contains(brewery.state ?? "N/A") {
+                        states.append(brewery.state ?? "N/A")
+                    }
+                }
+                
+                states.forEach { state in
+                    print(state)
+                }
+                
+                if states.count > 1 {
+                    showAlertController(states: states) {[unowned self] state in
+                        
+                        guard let city = breweriesUS.first?.city as? String else {return}
+                        let url = "https://api.openbrewerydb.org/breweries?by_city=\(city )&by_state=\(state)"
+                        networkManagerfetchesBreweries(forURL: url) { [self] breweriesUS in
+                            performSegue(withIdentifier: "navigationControllerID", sender: breweriesUS)
+                            
+                            
+                        }
+                        
+                        //                completionHandler: <#T##(String) -> Void#>)
+                    }
+                }
+                
+                
                 performSegue(withIdentifier: "navigationControllerID", sender: breweriesUS)
             }
         }
@@ -46,10 +77,10 @@ extension MainViewController {
         startScreenView.backgroundColor = UIColor(patternImage: background)
     }
     
-    private func networkManagerfetchesBreweries(forCity city: String,
+    private func networkManagerfetchesBreweries(forURL url: String,
                                                 completion: @escaping([Brewery]) -> Void)  {
         
-        NetworkManager.shared.fetchBreweries(forCity: city) { breweriesUS in
+        NetworkManager.shared.fetchBreweries(forURL: url) { breweriesUS in
             completion(breweriesUS)
         }
     }
