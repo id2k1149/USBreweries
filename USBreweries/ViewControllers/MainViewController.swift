@@ -46,7 +46,9 @@ final class MainViewController: UIViewController {
                 }
                 
                 if breweriesUS.first?.city != city {
-                    
+                    cityErrorAlertControler(with: "Can't find \(city) city",
+                              and: "Please, enter correct city name")
+                    return
                 }
                 
                 var states: [String] = []
@@ -62,7 +64,8 @@ final class MainViewController: UIViewController {
                 }
                 
                 if states.count > 1 {
-                    showAlertController(states: states) {[unowned self] state in
+                    selectStateAlertController(states: states,
+                                               city: city) {[unowned self] state in
                         guard let city = breweriesUS.first?.city as? String else {return}
                         let url = "https://api.openbrewerydb.org/breweries?by_city=\(city )&by_state=\(state)"
                         networkManagerfetchesBreweries(forURL: url) { [self] breweriesUS in
@@ -77,7 +80,7 @@ final class MainViewController: UIViewController {
     }
 }
 
-// MARK: - extension
+// MARK: - Extensions
 
 extension MainViewController {
     
@@ -92,5 +95,77 @@ extension MainViewController {
         NetworkManager.shared.fetchBreweries(forURL: url) { breweriesUS in
             completion(breweriesUS)
         }
+    }
+    
+    private func citySearchAlertController(withTitle title: String?,
+                                      message: String?,
+                                      style: UIAlertController.Style,
+                                      completionHandler: @escaping(String) -> Void) {
+        
+        let alertController = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: style
+        )
+        
+        alertController.addTextField { textField in
+            let cities = ["San Francisco",
+                          "Los Angeles",
+                          "New York",
+                          "Boston",
+                          "Dallas",
+                          "Atlanta"]
+            textField.placeholder = cities.randomElement()
+        }
+        
+        let search = UIAlertAction(title: "Search", style: .default) { action in
+            let textField = alertController.textFields?.first
+            guard let cityName = textField?.text else { return }
+            
+            if cityName != "" {
+                let city = cityName.split(separator: " ").joined(separator: "%20")
+                completionHandler(city)
+            }
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(search)
+        alertController.addAction(cancel)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    private func selectStateAlertController(states: [String],
+                                            city: String,
+                                            completionHandler: @escaping(String) -> Void ) {
+        
+        let alertController = UIAlertController(title: "Few states have \(city)",
+                                                message: "Choose one state",
+                                                preferredStyle: .alert)
+        
+        
+        
+        for state in states {
+            let action = UIAlertAction(title: state, style: .default, handler: { (action) in
+                // add your code here to handle the selection of the option
+                completionHandler(state)
+            })
+            alertController.addAction(action)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    private func cityErrorAlertControler(with title: String, and message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK",
+                                     style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }
