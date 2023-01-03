@@ -7,12 +7,16 @@
 
 import UIKit
 
-class BreweryTableViewController: UITableViewController {
+final class BreweryTableViewController: UITableViewController {
+    
+    // MARK: - @IBOutlet
     
     @IBOutlet weak var cityLabel: UINavigationItem!
     
     var breweries: [Brewery]!
 
+    // MARK: - override func
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,8 +42,6 @@ class BreweryTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
-
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -74,5 +76,4 @@ class BreweryTableViewController: UITableViewController {
 
         return cell
     }
-
 }

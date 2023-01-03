@@ -7,12 +7,14 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     
     // MARK: - @IBOutlet
+    
     @IBOutlet weak var startScreenView: UIView!
     
     // MARK: - override func
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
@@ -28,6 +30,7 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - @IBAction
+    
     @IBAction func searchButtonTapped(_ sender: UIButton) {
         self.citySearchAlertController(withTitle: "Enter US city name",
                                        message: nil,
@@ -35,6 +38,16 @@ class MainViewController: UIViewController {
             
             let url = "https://api.openbrewerydb.org/breweries?by_city=\(city)"
             networkManagerfetchesBreweries(forURL: url) { [self] breweriesUS in
+                
+                
+                
+                breweriesUS.forEach { brewery in
+                    print("\(brewery.city ?? "N/A") \(brewery.state ?? "N/A")")
+                }
+                
+                if breweriesUS.first?.city != city {
+                    
+                }
                 
                 var states: [String] = []
                 breweriesUS.forEach { brewery in
@@ -50,19 +63,13 @@ class MainViewController: UIViewController {
                 
                 if states.count > 1 {
                     showAlertController(states: states) {[unowned self] state in
-                        
                         guard let city = breweriesUS.first?.city as? String else {return}
                         let url = "https://api.openbrewerydb.org/breweries?by_city=\(city )&by_state=\(state)"
                         networkManagerfetchesBreweries(forURL: url) { [self] breweriesUS in
                             performSegue(withIdentifier: "navigationControllerID", sender: breweriesUS)
-                            
-                            
                         }
-                        
-                        //                completionHandler: <#T##(String) -> Void#>)
                     }
                 }
-                
                 
                 performSegue(withIdentifier: "navigationControllerID", sender: breweriesUS)
             }
@@ -71,7 +78,9 @@ class MainViewController: UIViewController {
 }
 
 // MARK: - extension
+
 extension MainViewController {
+    
     private func updateUI() {
         guard let background = UIImage(named: "start-screen-background") else { return }
         startScreenView.backgroundColor = UIColor(patternImage: background)
