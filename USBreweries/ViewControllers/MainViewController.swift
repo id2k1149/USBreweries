@@ -13,8 +13,8 @@ final class MainViewController: UIViewController {
     
     @IBOutlet weak var startScreenView: UIView!
     
-    // MARK: - override func
-    
+    // MARK: - Override functions
+
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
@@ -23,9 +23,12 @@ final class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let navigationVC = segue.destination as? UINavigationController
         else { return }
+        
         guard let breweryTableVC = navigationVC.topViewController as? BreweryTableViewController
         else { return }
+        
         guard let breweries = sender as? [Brewery] else { return }
+        
         breweryTableVC.breweries = breweries
     }
     
@@ -40,13 +43,10 @@ final class MainViewController: UIViewController {
             networkManagerfetchesBreweries(forURL: url) { [self] breweriesUS in
                 
                 
-                
-                breweriesUS.forEach { brewery in
-                    print("\(brewery.city ?? "N/A") \(brewery.state ?? "N/A")")
-                }
-                
-                if breweriesUS.first?.city != city {
-                    cityErrorAlertControler(with: "Can't find \(city) city",
+                let citySplitAndJoin = city.split(separator: "%20").joined(separator: " ")
+               
+                if breweriesUS.first?.city != citySplitAndJoin {
+                    cityErrorAlertControler(with: "Can't find \"\(citySplitAndJoin)\" city",
                               and: "Please, enter correct city name")
                     return
                 }
@@ -59,21 +59,21 @@ final class MainViewController: UIViewController {
                     }
                 }
                 
-                states.forEach { state in
-                    print(state)
-                }
-                
                 if states.count > 1 {
                     selectStateAlertController(states: states,
                                                city: city) {[unowned self] state in
+//                        print(state)
                         guard let city = breweriesUS.first?.city as? String else {return}
+//                        print(city)
                         let url = "https://api.openbrewerydb.org/breweries?by_city=\(city )&by_state=\(state)"
+//                        print(url)
                         networkManagerfetchesBreweries(forURL: url) { [self] breweriesUS in
+//                            print(breweriesUS)
                             performSegue(withIdentifier: "navigationControllerID", sender: breweriesUS)
                         }
                     }
                 }
-                
+//                print(breweriesUS)
                 performSegue(withIdentifier: "navigationControllerID", sender: breweriesUS)
             }
         }
@@ -139,23 +139,22 @@ extension MainViewController {
                                             city: String,
                                             completionHandler: @escaping(String) -> Void ) {
         
-        let alertController = UIAlertController(title: "Few states have \(city)",
-                                                message: "Choose one state",
+        let alertController = UIAlertController(title: "A few states have \(city)",
+                                                message: "Please choose one state",
                                                 preferredStyle: .alert)
         
         
         
         for state in states {
             let action = UIAlertAction(title: state, style: .default, handler: { (action) in
-                // add your code here to handle the selection of the option
                 completionHandler(state)
             })
             alertController.addAction(action)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
         
+        alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
     }
     
@@ -163,8 +162,10 @@ extension MainViewController {
         let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .alert)
+        
         let okAction = UIAlertAction(title: "OK",
                                      style: .default)
+        
         alert.addAction(okAction)
         present(alert, animated: true)
     }

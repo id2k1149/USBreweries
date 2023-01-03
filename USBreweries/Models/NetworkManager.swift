@@ -7,28 +7,42 @@
 
 import Foundation
 
-class NetworkManager {
+final class NetworkManager {
     static let shared = NetworkManager()
     private init(){}
     
     func fetchBreweries(forURL url: String,
                         completion: @escaping([Brewery]) -> Void) {
         
-        guard let url = URL(string: url) else { return }
+        print("url before \(url)")
+       
+        let urlSplitAndJoin = url.split(separator: " ").joined(separator: "%20")
+        guard let urlForData = URL(string: urlSplitAndJoin) else { return }
+        print("url after \(urlForData)")
         
-        URLSession.shared.dataTask(with: url) { data, _, error in
+        URLSession.shared.dataTask(with: urlForData) { data, _, error in
+            print(data ?? "????????????")
+            
             guard let data = data else {
                 print(error?.localizedDescription ?? "No error description")
                 return
             }
             
+            
+            
             do {
                 let jsonDecoder = JSONDecoder()
                 let breweries = try jsonDecoder.decode([Brewery].self, from: data)
                 
-               let breweriesWithAddress = breweries.filter {
+                breweries.forEach { brewery in
+                    print("\(brewery.name ?? "no name") \(brewery.state ?? "no state")")
+                }
+                
+                let breweriesWithAddress = breweries.filter {
                     !($0.street?.contains("N/A") ?? true)
-                    }
+                }
+                
+//                print(breweriesWithAddress)
                 
                 DispatchQueue.main.async {
                     completion(breweriesWithAddress)
