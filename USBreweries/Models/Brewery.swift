@@ -38,9 +38,3 @@ struct Brewery: Decodable {
         print("created_at: \(self.created_at ?? "N/A")")
     }
 }
-
-struct WebsiteDesctiption: Decodable {
-    let breweries: [Brewery]?
-    let websiteDescription: String?
-    let websiteName: String?
-}

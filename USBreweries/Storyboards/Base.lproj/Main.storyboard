@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,50 +12,170 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="USBreweries" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="Start Screen View">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTa-Nf-2U6">
-                                <rect key="frame" x="10" y="100" width="300" height="36"/>
-                                <color key="backgroundColor" systemColor="tintColor"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Nuy-Qh-WD5">
+                                <rect key="frame" x="16" y="60" width="343" height="309"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dwh-WT-Cz6" userLabel="ViewOne">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="222"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mug.fill" translatesAutoresizingMaskIntoConstraints="NO" id="yex-82-AjP">
+                                                <rect key="frame" x="71.5" y="11" width="200" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="8HV-28-ne2"/>
+                                                    <constraint firstAttribute="height" constant="200" id="MH9-0s-hin"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <constraints>
+                                            <constraint firstItem="yex-82-AjP" firstAttribute="height" secondItem="Dwh-WT-Cz6" secondAttribute="height" multiplier="0.9" id="Msc-jf-4V9"/>
+                                            <constraint firstItem="yex-82-AjP" firstAttribute="centerX" secondItem="Dwh-WT-Cz6" secondAttribute="centerX" id="ejV-aZ-Mmk"/>
+                                            <constraint firstItem="yex-82-AjP" firstAttribute="centerY" secondItem="Dwh-WT-Cz6" secondAttribute="centerY" id="hup-ns-oKG"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BTR-Qt-Mmn" userLabel="ViewTwo">
+                                        <rect key="frame" x="0.0" y="242" width="343" height="67"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uWO-Ym-d54">
+                                                <rect key="frame" x="10" y="3.5" width="323" height="60.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fetch US breweries" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVB-WH-S3e">
+                                                        <rect key="frame" x="0.0" y="17" width="252.5" height="26.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6E0-rp-O0b">
+                                                        <rect key="frame" x="262.5" y="0.5" width="60.5" height="59.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="6E0-rp-O0b" secondAttribute="height" id="JuC-Af-LBX"/>
+                                                        </constraints>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" backgroundImage="magnifyingglass.circle.fill" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="searchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mLB-GQ-utk"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="uWO-Ym-d54" secondAttribute="trailing" constant="10" id="1WZ-P1-6D4"/>
+                                            <constraint firstItem="uWO-Ym-d54" firstAttribute="centerY" secondItem="BTR-Qt-Mmn" secondAttribute="centerY" id="4gl-in-cfW"/>
+                                            <constraint firstAttribute="height" secondItem="6E0-rp-O0b" secondAttribute="height" multiplier="1.1" id="Dw6-cZ-kRc"/>
+                                            <constraint firstItem="uWO-Ym-d54" firstAttribute="leading" secondItem="BTR-Qt-Mmn" secondAttribute="leading" constant="10" id="Tvg-lw-zxO"/>
+                                            <constraint firstItem="uWO-Ym-d54" firstAttribute="centerX" secondItem="BTR-Qt-Mmn" secondAttribute="centerX" id="Zaj-Y3-5aM"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="bTx-qa-JJi"/>
+                                    <constraint firstItem="BTR-Qt-Mmn" firstAttribute="width" secondItem="Dwh-WT-Cz6" secondAttribute="width" id="24f-RJ-YpX"/>
+                                    <constraint firstItem="Dwh-WT-Cz6" firstAttribute="leading" secondItem="Nuy-Qh-WD5" secondAttribute="leading" id="DlN-89-Qnt"/>
+                                    <constraint firstItem="BTR-Qt-Mmn" firstAttribute="height" secondItem="Dwh-WT-Cz6" secondAttribute="height" multiplier="0.3" id="LNO-W3-cJd"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dwh-WT-Cz6" secondAttribute="trailing" id="ioP-jf-oCw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Fetch breweries in Portland(ME)">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="fetchButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="hCN-9r-kWG"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.29379251090000003" green="0.24983001939999999" blue="0.1883161984" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="vTa-Nf-2U6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="Wfd-Ww-1JI"/>
-                            <constraint firstItem="vTa-Nf-2U6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cgp-uF-qJT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Nuy-Qh-WD5" secondAttribute="trailing" constant="16" id="hu2-Zs-KTS"/>
+                            <constraint firstItem="Nuy-Qh-WD5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="o6H-un-sFO"/>
+                            <constraint firstItem="Nuy-Qh-WD5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="wUo-hU-0Le"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="startScreenView" destination="8bC-Xf-vdC" id="WxU-OD-U4a"/>
+                        <segue destination="cDI-Tj-aNH" kind="show" identifier="navigationControllerID" animates="NO" id="HuV-TI-Awi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="100" y="-34"/>
+            <point key="canvasLocation" x="-183" y="-221"/>
+        </scene>
+        <!--City (State)-->
+        <scene sceneID="W8t-mE-3fL">
+            <objects>
+                <tableViewController modalPresentationStyle="fullScreen" id="dVq-4Z-nGx" customClass="BreweryTableViewController" customModule="USBreweries" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="bTG-RT-WtG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="breweryID" id="8sP-Hz-IBI">
+                                <rect key="frame" x="0.0" y="50" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8sP-Hz-IBI" id="RNz-Ix-gda">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dVq-4Z-nGx" id="5kU-Qn-zmW"/>
+                            <outlet property="delegate" destination="dVq-4Z-nGx" id="mJP-U1-Ob2"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="City (State)" id="5jw-zm-je1">
+                        <barButtonItem key="leftBarButtonItem" title="back" image="chevron.backward" catalog="system" id="46Q-KH-IaB">
+                            <connections>
+                                <action selector="backButtonTapped:" destination="dVq-4Z-nGx" id="SiS-aP-MKg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cityLabel" destination="5jw-zm-je1" id="21w-ul-VTo"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vnD-TJ-8Dr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="556" y="501"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fmF-Yf-1ml">
+            <objects>
+                <navigationController modalPresentationStyle="fullScreen" id="cDI-Tj-aNH" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="eA3-H8-MeR">
+                        <barButtonItem key="backBarButtonItem" title="back" id="Zjx-zD-z6H"/>
+                    </navigationItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="vsz-fq-St3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dVq-4Z-nGx" kind="relationship" relationship="rootViewController" id="BXi-Ba-QoC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G4C-5g-q5c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="556" y="-224"/>
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="mug.fill" width="1602" height="1849"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
