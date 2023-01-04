@@ -21,6 +21,7 @@ struct Brewery: Decodable {
     let updated_at: String?
     let created_at: String?
     
+    /*
     func printAllValues() {
         print("id: \(self.id ?? "N/A")")
         print("name: \(self.name ?? "N/A")")
@@ -37,4 +38,5 @@ struct Brewery: Decodable {
         print("updated_at: \(self.updated_at ?? "N/A")")
         print("created_at: \(self.created_at ?? "N/A")")
     }
+     */
 }

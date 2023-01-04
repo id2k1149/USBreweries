@@ -42,7 +42,7 @@ final class BreweryTableViewController: UITableViewController {
         var content = cell.defaultContentConfiguration()
  
         content.text = brewery.name
-        content.secondaryText = "\(brewery.street ?? ""), phone: \(brewery.phone ?? "")"
+        content.secondaryText = "\(brewery.street ?? ""), phone: \(brewery.phone ?? "N/A")"
         
         cell.contentConfiguration = content
 
@@ -121,7 +121,7 @@ extension BreweryTableViewController {
             return "MT"
         case "Nebraska":
             return "NE"
-        case "nevada":
+        case "Nevada":
             return "NV"
         case "New Hampshire":
             return "NH"
