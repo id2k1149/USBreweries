@@ -42,7 +42,6 @@ final class MainViewController: UIViewController {
             let url = "https://api.openbrewerydb.org/breweries?by_city=\(city)"
             networkManagerfetchesBreweries(forURL: url) { [self] breweriesUS in
                 
-                
                 let citySplitAndJoin = city.split(separator: "%20").joined(separator: " ")
                
                 if breweriesUS.first?.city != citySplitAndJoin {
@@ -52,6 +51,7 @@ final class MainViewController: UIViewController {
                 }
                 
                 var states: [String] = []
+                
                 breweriesUS.forEach { brewery in
 
                     if !states.contains(brewery.state ?? "N/A") {
@@ -62,18 +62,17 @@ final class MainViewController: UIViewController {
                 if states.count > 1 {
                     selectStateAlertController(states: states,
                                                city: city) {[unowned self] state in
-//                        print(state)
+
                         guard let city = breweriesUS.first?.city as? String else {return}
-//                        print(city)
+
                         let url = "https://api.openbrewerydb.org/breweries?by_city=\(city )&by_state=\(state)"
-//                        print(url)
+
                         networkManagerfetchesBreweries(forURL: url) { [self] breweriesUS in
-//                            print(breweriesUS)
                             performSegue(withIdentifier: "navigationControllerID", sender: breweriesUS)
                         }
                     }
                 }
-//                print(breweriesUS)
+
                 performSegue(withIdentifier: "navigationControllerID", sender: breweriesUS)
             }
         }
@@ -139,11 +138,9 @@ extension MainViewController {
                                             city: String,
                                             completionHandler: @escaping(String) -> Void ) {
         
-        let alertController = UIAlertController(title: "A few states have \(city)",
+        let alertController = UIAlertController(title: "A few states have \(city) city",
                                                 message: "Please choose one state",
                                                 preferredStyle: .alert)
-        
-        
         
         for state in states {
             let action = UIAlertAction(title: state, style: .default, handler: { (action) in
