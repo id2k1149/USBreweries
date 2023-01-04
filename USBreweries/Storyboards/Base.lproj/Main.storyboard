@@ -48,7 +48,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uWO-Ym-d54">
                                                 <rect key="frame" x="10" y="3.5" width="323" height="60.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fetch breweries" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVB-WH-S3e">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fetch US breweries" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVB-WH-S3e">
                                                         <rect key="frame" x="0.0" y="17" width="252.5" height="26.5"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                         <nil key="textColor"/>
@@ -109,7 +109,7 @@
             </objects>
             <point key="canvasLocation" x="-183" y="-221"/>
         </scene>
-        <!--Breweries in ...-->
+        <!--City (State)-->
         <scene sceneID="W8t-mE-3fL">
             <objects>
                 <tableViewController modalPresentationStyle="fullScreen" id="dVq-4Z-nGx" customClass="BreweryTableViewController" customModule="USBreweries" customModuleProvider="target" sceneMemberID="viewController">
@@ -132,8 +132,12 @@
                             <outlet property="delegate" destination="dVq-4Z-nGx" id="mJP-U1-Ob2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Breweries in ..." id="5jw-zm-je1">
-                        <barButtonItem key="leftBarButtonItem" title="back" image="chevron.backward" catalog="system" id="46Q-KH-IaB"/>
+                    <navigationItem key="navigationItem" title="City (State)" id="5jw-zm-je1">
+                        <barButtonItem key="leftBarButtonItem" title="back" image="chevron.backward" catalog="system" id="46Q-KH-IaB">
+                            <connections>
+                                <action selector="backButtonTapped:" destination="dVq-4Z-nGx" id="SiS-aP-MKg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cityLabel" destination="5jw-zm-je1" id="21w-ul-VTo"/>

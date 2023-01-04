@@ -22,6 +22,12 @@ final class BreweryTableViewController: UITableViewController {
         updateUI()
     }
 
+    // MARK: - @IBAction
+    
+    @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,9 +40,9 @@ final class BreweryTableViewController: UITableViewController {
         let brewery = breweries[indexPath.row]
 
         var content = cell.defaultContentConfiguration()
-        
+ 
         content.text = brewery.name
-        content.secondaryText = brewery.street
+        content.secondaryText = "\(brewery.street ?? ""), phone: \(brewery.phone ?? "")"
         
         cell.contentConfiguration = content
 
