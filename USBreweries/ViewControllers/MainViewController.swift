@@ -64,8 +64,10 @@ final class MainViewController: UIViewController {
                                                city: city) {[unowned self] state in
 
                         guard let city = breweriesUS.first?.city as? String else {return}
+                        
+                        let stateSplitAndJoin = state.split(separator: " ").joined(separator: "%20")
 
-                        let url = "https://api.openbrewerydb.org/breweries?by_city=\(city )&by_state=\(state)"
+                        let url = "https://api.openbrewerydb.org/breweries?by_city=\(city)&by_state=\(stateSplitAndJoin)"
 
                         networkManagerfetchesBreweries(forURL: url) { [self] breweriesUS in
                             performSegue(withIdentifier: "navigationControllerID", sender: breweriesUS)

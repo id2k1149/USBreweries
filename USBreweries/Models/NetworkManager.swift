@@ -14,7 +14,7 @@ final class NetworkManager {
     func fetchBreweries(forURL url: String,
                         completion: @escaping([Brewery]) -> Void) {
         
-        guard let url = URL(string: url.split(separator: " ").joined(separator: "%20")) else { return }
+        guard let url = URL(string: url) else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
             

@@ -109,6 +109,25 @@
             </objects>
             <point key="canvasLocation" x="-183" y="-221"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fmF-Yf-1ml">
+            <objects>
+                <navigationController modalPresentationStyle="fullScreen" id="cDI-Tj-aNH" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="eA3-H8-MeR">
+                        <barButtonItem key="backBarButtonItem" title="back" id="Zjx-zD-z6H"/>
+                    </navigationItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="vsz-fq-St3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dVq-4Z-nGx" kind="relationship" relationship="rootViewController" id="BXi-Ba-QoC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G4C-5g-q5c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="556" y="-224"/>
+        </scene>
         <!--City (State)-->
         <scene sceneID="W8t-mE-3fL">
             <objects>
@@ -145,26 +164,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnD-TJ-8Dr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="556" y="501"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="fmF-Yf-1ml">
-            <objects>
-                <navigationController modalPresentationStyle="fullScreen" id="cDI-Tj-aNH" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="eA3-H8-MeR">
-                        <barButtonItem key="backBarButtonItem" title="back" id="Zjx-zD-z6H"/>
-                    </navigationItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="vsz-fq-St3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="dVq-4Z-nGx" kind="relationship" relationship="rootViewController" id="BXi-Ba-QoC"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G4C-5g-q5c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="556" y="-224"/>
+            <point key="canvasLocation" x="1335" y="-224"/>
         </scene>
     </scenes>
     <resources>
