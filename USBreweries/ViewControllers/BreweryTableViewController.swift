@@ -19,6 +19,7 @@ final class BreweryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = 100
         updateUI()
     }
 
