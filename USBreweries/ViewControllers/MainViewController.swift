@@ -9,12 +9,12 @@ import UIKit
 
 final class MainViewController: UIViewController {
     
-    // MARK: - @IBOutlet
+    private var breweriesList: [Brewery] = []
     
+    // MARK: - @IBOutlet
     @IBOutlet weak var startScreenView: UIView!
     
     // MARK: - Override functions
-
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
@@ -43,17 +43,17 @@ final class MainViewController: UIViewController {
             networkManagerfetchesBreweries(forURL: url) { [self] breweriesUS in
                 
                 let citySplitAndJoin = city.split(separator: "%20").joined(separator: " ")
-               
+                
                 if breweriesUS.first?.city != citySplitAndJoin {
                     cityErrorAlertControler(with: "Can't find \"\(citySplitAndJoin)\" city",
-                              and: "Please, enter correct city name")
+                                            and: "Please, enter correct city name")
                     return
                 }
                 
                 var states: [String] = []
                 
                 breweriesUS.forEach { brewery in
-
+                    
                     if !states.contains(brewery.state ?? "N/A") {
                         states.append(brewery.state ?? "N/A")
                     }
@@ -62,19 +62,19 @@ final class MainViewController: UIViewController {
                 if states.count > 1 {
                     selectStateAlertController(states: states,
                                                city: city) {[unowned self] state in
-
+                        
                         guard let city = breweriesUS.first?.city as? String else {return}
                         
                         let stateSplitAndJoin = state.split(separator: " ").joined(separator: "%20")
-
+                        
                         let url = "https://api.openbrewerydb.org/breweries?by_city=\(city)&by_state=\(stateSplitAndJoin)"
-
+                        
                         networkManagerfetchesBreweries(forURL: url) { [self] breweriesUS in
                             performSegue(withIdentifier: "navigationControllerID", sender: breweriesUS)
                         }
                     }
                 }
-
+                
                 performSegue(withIdentifier: "navigationControllerID", sender: breweriesUS)
             }
         }
