@@ -66,10 +66,19 @@ extension BreweryTableViewController {
         AF.request(url, method: .get)
             .validate()
             .responseJSON {dataResponce in
+                switch dataResponce.result {
+                case .success(let value):
+                    print(value)
+                case .failure(let error):
+                    print(error)
+                }
+                
+                /*
                 guard let statusCode = dataResponce.response?.statusCode else {return}
                 print(statusCode)
                 guard let value = dataResponce.value else {return}
                 print(value)
+                 */
                 
                 /*
                 response in
