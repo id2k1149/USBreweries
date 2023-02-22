@@ -20,7 +20,7 @@ final class BreweryTableViewController: UITableViewController {
     // MARK: - Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = 100
+        tableView.rowHeight = 110
 //        updateUI()
         print(city ?? "N/A")
         fetchBreweries(for: city)
@@ -37,19 +37,25 @@ final class BreweryTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "breweryID", for: indexPath)
-
         /*
+        let cell = tableView.dequeueReusableCell(withIdentifier: "breweryCell", for: indexPath)
+
         let brewery = breweries[indexPath.row]
 
         var content = cell.defaultContentConfiguration()
- 
         content.text = brewery.name
         content.secondaryText = "\(brewery.street ?? ""), phone: \(brewery.phone ?? "N/A")"
-        
         cell.contentConfiguration = content
+        
+        cell.configure(with: brewery)
+        
+        return cell
          */
-
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "breweryCell", for: indexPath) as? BreweryCell
+        else { return UITableViewCell() }
+        
+        let brewery = breweries[indexPath.row]
+        cell.configure(with: brewery)
         return cell
     }
 }

@@ -135,7 +135,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="breweryID" rowHeight="100" id="8sP-Hz-IBI">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="breweryCell" rowHeight="100" id="8sP-Hz-IBI" customClass="BreweryCell" customModule="USBreweries" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8sP-Hz-IBI" id="RNz-Ix-gda">
@@ -143,16 +143,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brewery Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Emk-6s-pUf" userLabel="Brewery Name Label">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="40"/>
+                                            <rect key="frame" x="16" y="0.0" width="343" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="Ktl-Vt-dEZ"/>
+                                                <constraint firstAttribute="height" constant="30" id="Ktl-Vt-dEZ"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Street" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzb-eQ-Gqe" userLabel="Street Label">
-                                            <rect key="frame" x="16" y="48" width="343" height="16"/>
+                                            <rect key="frame" x="16" y="38" width="343" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="04m-Ig-gNm"/>
                                             </constraints>
@@ -161,7 +161,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qR8-bJ-LZO" userLabel="Phone Label">
-                                            <rect key="frame" x="16" y="72" width="343" height="16"/>
+                                            <rect key="frame" x="16" y="62" width="343" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="1tj-zn-SxI"/>
                                             </constraints>
@@ -169,19 +169,37 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Web page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v3I-x2-lBe" userLabel="Web page">
+                                            <rect key="frame" x="16" y="86" width="343" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="tSD-gD-d8Z"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="v3I-x2-lBe" firstAttribute="top" secondItem="qR8-bJ-LZO" secondAttribute="bottom" constant="8" id="1ED-kh-0xf"/>
                                         <constraint firstItem="Emk-6s-pUf" firstAttribute="top" secondItem="RNz-Ix-gda" secondAttribute="top" id="CSn-3U-is7"/>
                                         <constraint firstAttribute="trailing" secondItem="pzb-eQ-Gqe" secondAttribute="trailing" constant="16" id="Uxr-qB-bei"/>
+                                        <constraint firstItem="v3I-x2-lBe" firstAttribute="leading" secondItem="RNz-Ix-gda" secondAttribute="leading" constant="16" id="XPn-9G-fYX"/>
                                         <constraint firstItem="pzb-eQ-Gqe" firstAttribute="leading" secondItem="RNz-Ix-gda" secondAttribute="leading" constant="16" id="cJu-m4-sbe"/>
                                         <constraint firstItem="pzb-eQ-Gqe" firstAttribute="top" secondItem="Emk-6s-pUf" secondAttribute="bottom" constant="8" id="haR-bQ-dVr"/>
                                         <constraint firstAttribute="trailing" secondItem="Emk-6s-pUf" secondAttribute="trailing" constant="16" id="hmW-Ar-aod"/>
                                         <constraint firstItem="qR8-bJ-LZO" firstAttribute="top" secondItem="pzb-eQ-Gqe" secondAttribute="bottom" constant="8" id="jbK-Ys-tQM"/>
+                                        <constraint firstAttribute="trailing" secondItem="v3I-x2-lBe" secondAttribute="trailing" constant="16" id="plB-5X-9oa"/>
                                         <constraint firstAttribute="trailing" secondItem="qR8-bJ-LZO" secondAttribute="trailing" constant="16" id="uey-qC-H1i"/>
                                         <constraint firstItem="qR8-bJ-LZO" firstAttribute="leading" secondItem="RNz-Ix-gda" secondAttribute="leading" constant="16" id="whQ-wb-7XG"/>
                                         <constraint firstItem="Emk-6s-pUf" firstAttribute="leading" secondItem="RNz-Ix-gda" secondAttribute="leading" constant="16" id="y1T-ZU-K0s"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="breweryNameLabel" destination="Emk-6s-pUf" id="dB9-w7-QlP"/>
+                                    <outlet property="phoneLabel" destination="qR8-bJ-LZO" id="h8q-u7-Ieh"/>
+                                    <outlet property="streetLabel" destination="pzb-eQ-Gqe" id="IH3-dc-Y5O"/>
+                                    <outlet property="webPageLabel" destination="v3I-x2-lBe" id="kSx-Mr-eSX"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
