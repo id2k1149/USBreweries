@@ -13,8 +13,9 @@ final class BreweryTableViewController: UITableViewController {
     // MARK: - @IBOutlet
     @IBOutlet weak var cityLabel: UINavigationItem!
     
-    var breweries: [Brewery]!
+//    var breweries: [Brewery]!
     var city: String!
+    private var breweries: [Brewery] = []
 
     // MARK: - Override functions
     override func viewDidLoad() {
@@ -22,7 +23,7 @@ final class BreweryTableViewController: UITableViewController {
         tableView.rowHeight = 100
 //        updateUI()
         print(city ?? "N/A")
-        fetchBreweries()
+        fetchBreweries(for: city)
     }
 
     // MARK: - @IBAction
@@ -32,8 +33,7 @@ final class BreweryTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        breweries.count
-        5
+        breweries.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,18 +57,32 @@ final class BreweryTableViewController: UITableViewController {
 // MARK: - Extensions
 extension BreweryTableViewController {
     
-    func fetchBreweries() {
-        print(city ?? "")
-        
+    func fetchBreweries(for city: String) {
+    
         let citySplitAndJoin = city.split(separator: " ").joined(separator: "%20")
         let url = "https://api.openbrewerydb.org/breweries?by_city=\(citySplitAndJoin)"
         
         AF.request(url, method: .get)
             .validate()
-            .responseJSON {dataResponce in
+            .responseJSON { [weak self] dataResponce in
                 switch dataResponce.result {
                 case .success(let value):
-                    print(value)
+                    guard let breweriesData = value as? [[String: Any]] else {return}
+                    
+                    for each in breweriesData {
+                        let brewery = Brewery(
+                            name: each["name"] as? String,
+                            street: each["street"] as? String,
+                            city: each["city"] as? String,
+                            state:each["state"] as? String,
+                            postal_code: each["postal_code"] as? String,
+                            phone: each["phone"] as? String,
+                            website_url: each["website_url"] as? String
+                        )
+                        self?.breweries.append(brewery)
+                    }
+                    self?.tableView.reloadData()
+                    
                 case .failure(let error):
                     print(error)
                 }
