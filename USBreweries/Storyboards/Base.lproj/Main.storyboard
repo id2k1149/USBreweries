@@ -190,7 +190,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="City" id="AX0-fT-Nde">
-                        <barButtonItem key="leftBarButtonItem" title="&lt; back" id="XRb-7G-5hW">
+                        <barButtonItem key="leftBarButtonItem" title="◁ back" id="XRb-7G-5hW">
                             <connections>
                                 <action selector="backButtonTapped:" destination="dVq-4Z-nGx" id="6fo-DI-ob0"/>
                             </connections>
