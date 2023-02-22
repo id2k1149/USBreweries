@@ -9,10 +9,11 @@ import UIKit
 
 final class MainViewController: UIViewController {
     
-    private var breweriesList: [Brewery] = []
-    
     // MARK: - @IBOutlet
     @IBOutlet weak var startScreenView: UIView!
+    
+    //    private var breweriesList: [Brewery] = []
+    
     
     // MARK: - Override functions
     override func viewDidLoad() {
@@ -27,9 +28,11 @@ final class MainViewController: UIViewController {
         guard let breweryTableVC = navigationVC.topViewController as? BreweryTableViewController
         else { return }
         
-        guard let breweries = sender as? [Brewery] else { return }
+//        guard let breweries = sender as? [Brewery] else { return }
+//        breweryTableVC.breweries = breweries
         
-        breweryTableVC.breweries = breweries
+        guard let cityName = sender as? String else { return }
+        breweryTableVC.city = cityName
     }
     
     // MARK: - @IBAction
@@ -39,6 +42,9 @@ final class MainViewController: UIViewController {
                                        message: nil,
                                        style: .alert) {[unowned self] city in
             
+            performSegue(withIdentifier: "navigationControllerID", sender: city)
+            
+            /*
             let url = "https://api.openbrewerydb.org/breweries?by_city=\(city)"
             networkManagerfetchesBreweries(forURL: url) { [self] breweriesUS in
                 
@@ -50,6 +56,7 @@ final class MainViewController: UIViewController {
                     return
                 }
                 
+                /*
                 var states: [String] = []
                 
                 breweriesUS.forEach { brewery in
@@ -74,9 +81,11 @@ final class MainViewController: UIViewController {
                         }
                     }
                 }
+                */
                 
                 performSegue(withIdentifier: "navigationControllerID", sender: breweriesUS)
             }
+            */
         }
     }
 }
@@ -86,10 +95,11 @@ final class MainViewController: UIViewController {
 extension MainViewController {
     
     private func updateUI() {
-        guard let background = UIImage(named: "start-screen-background") else { return }
+        guard let background = UIImage(named: "screen-background") else { return }
         startScreenView.backgroundColor = UIColor(patternImage: background)
     }
     
+    /*
     private func networkManagerfetchesBreweries(forURL url: String,
                                                 completion: @escaping([Brewery]) -> Void)  {
         
@@ -97,6 +107,7 @@ extension MainViewController {
             completion(breweriesUS)
         }
     }
+     */
     
     private func citySearchAlertController(withTitle title: String?,
                                       message: String?,
@@ -124,8 +135,8 @@ extension MainViewController {
             guard let cityName = textField?.text else { return }
             
             if cityName != "" {
-                let city = cityName.split(separator: " ").joined(separator: "%20")
-                completionHandler(city)
+//                let city = cityName.split(separator: " ").joined(separator: "%20")
+                completionHandler(cityName)
             }
         }
         
@@ -136,6 +147,7 @@ extension MainViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    /*
     private func selectStateAlertController(states: [String],
                                             city: String,
                                             completionHandler: @escaping(String) -> Void ) {
@@ -156,7 +168,9 @@ extension MainViewController {
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
     }
+    */
     
+    /*
     private func cityErrorAlertControler(with title: String, and message: String) {
         let alert = UIAlertController(title: title,
                                       message: message,
@@ -168,4 +182,5 @@ extension MainViewController {
         alert.addAction(okAction)
         present(alert, animated: true)
     }
+    */
 }

@@ -13,12 +13,14 @@ final class BreweryTableViewController: UITableViewController {
     @IBOutlet weak var cityLabel: UINavigationItem!
     
     var breweries: [Brewery]!
+    var city: String!
 
     // MARK: - Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 100
-        updateUI()
+//        updateUI()
+        print(city ?? "N/A")
     }
 
     // MARK: - @IBAction
@@ -28,12 +30,14 @@ final class BreweryTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        breweries.count
+//        breweries.count
+        5
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "breweryID", for: indexPath)
 
+        /*
         let brewery = breweries[indexPath.row]
 
         var content = cell.defaultContentConfiguration()
@@ -42,6 +46,7 @@ final class BreweryTableViewController: UITableViewController {
         content.secondaryText = "\(brewery.street ?? ""), phone: \(brewery.phone ?? "N/A")"
         
         cell.contentConfiguration = content
+         */
 
         return cell
     }
