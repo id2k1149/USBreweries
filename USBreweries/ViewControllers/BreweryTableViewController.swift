@@ -10,13 +10,11 @@ import UIKit
 final class BreweryTableViewController: UITableViewController {
     
     // MARK: - @IBOutlet
-    
     @IBOutlet weak var cityLabel: UINavigationItem!
     
     var breweries: [Brewery]!
 
     // MARK: - Override functions
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 100
@@ -24,13 +22,11 @@ final class BreweryTableViewController: UITableViewController {
     }
 
     // MARK: - @IBAction
-    
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
     
     // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         breweries.count
     }
@@ -52,7 +48,6 @@ final class BreweryTableViewController: UITableViewController {
 }
 
 // MARK: - Extensions
-
 extension BreweryTableViewController {
     
     private func updateUI() {
