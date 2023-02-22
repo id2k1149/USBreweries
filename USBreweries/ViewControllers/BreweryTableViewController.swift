@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 final class BreweryTableViewController: UITableViewController {
     
@@ -21,6 +22,7 @@ final class BreweryTableViewController: UITableViewController {
         tableView.rowHeight = 100
 //        updateUI()
         print(city ?? "N/A")
+        fetchBreweries()
     }
 
     // MARK: - @IBAction
@@ -54,6 +56,33 @@ final class BreweryTableViewController: UITableViewController {
 
 // MARK: - Extensions
 extension BreweryTableViewController {
+    
+    func fetchBreweries() {
+        print(city ?? "")
+        
+        let citySplitAndJoin = city.split(separator: " ").joined(separator: "%20")
+        let url = "https://api.openbrewerydb.org/breweries?by_city=\(citySplitAndJoin)"
+        
+        AF.request(url, method: .get)
+            .validate()
+            .responseJSON {dataResponce in
+                guard let statusCode = dataResponce.response?.statusCode else {return}
+                print(statusCode)
+                guard let value = dataResponce.value else {return}
+                print(value)
+                
+                /*
+                response in
+                    switch response.result {
+                    case .success(let value):
+                        let courses = Brewery.getBreweries(from: value)
+                        completion(.success(courses))
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
+                 */
+            }
+    }
     
     private func updateUI() {
         let stateCode = getStateCode(for: breweries

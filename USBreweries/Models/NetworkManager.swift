@@ -12,6 +12,30 @@ final class NetworkManager {
     static let shared = NetworkManager()
     private init(){}
     
+    func fetchBreweries(for city: String,
+                        completion: @escaping([Brewery]) -> Void) {
+        
+        let citySplitAndJoin = city.split(separator: "%20").joined(separator: " ")
+        let url = "https://api.openbrewerydb.org/breweries?by_city=\(citySplitAndJoin)"
+        
+        AF.request(url, method: .get)
+            .validate()
+            .responseJSON {_ in
+                
+                /*
+                response in
+                    switch response.result {
+                    case .success(let value):
+                        let courses = Brewery.getBreweries(from: value)
+                        completion(.success(courses))
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
+                 */
+            }
+    }
+    
+    /*
     func fetchBreweries(forURL url: String,
                         completion: @escaping([Brewery]) -> Void) {
         
@@ -40,4 +64,5 @@ final class NetworkManager {
             
         }.resume()
     }
+     */
 }
