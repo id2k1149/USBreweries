@@ -21,7 +21,7 @@ final class BreweryTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.rowHeight = 110
 //        updateUI()
-        print(city ?? "N/A")
+       
         fetchBreweries()
     }
 
@@ -36,21 +36,9 @@ final class BreweryTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        /*
-        let cell = tableView.dequeueReusableCell(withIdentifier: "breweryCell", for: indexPath)
-
-        let brewery = breweries[indexPath.row]
-
-        var content = cell.defaultContentConfiguration()
-        content.text = brewery.name
-        content.secondaryText = "\(brewery.street ?? ""), phone: \(brewery.phone ?? "N/A")"
-        cell.contentConfiguration = content
         
-        cell.configure(with: brewery)
-        
-        return cell
-         */
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "breweryCell", for: indexPath) as? BreweryCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "breweryCell",
+                                                       for: indexPath) as? BreweryCell
         else { return UITableViewCell() }
         
         let brewery = breweries[indexPath.row]
@@ -63,37 +51,26 @@ final class BreweryTableViewController: UITableViewController {
 extension BreweryTableViewController {
     
     func fetchBreweries() {
-        NetworkManager.shared.fetchBreweries(for: city) { [weak self] result in
+        NetworkManager.shared.fetchBreweries(for: city) { [self] result in
             switch result {
             case .success(let breweries):
-                self?.breweries = breweries
-                self?.tableView.reloadData()
+                print(breweries.first?.city ?? "N/A")
+               
+                
+                if city != breweries.first?.city {
+                    cityErrorAlertControler(with: "Can't find \"\(self.city ?? "")\" city",
+                                            and: "Please, enter correct city name")
+                    
+                    return
+                }
+                 
+                
+                self.breweries = breweries
+                self.tableView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
-        
-    
-        
-                
-                /*
-                guard let statusCode = dataResponce.response?.statusCode else {return}
-                print(statusCode)
-                guard let value = dataResponce.value else {return}
-                print(value)
-                 */
-                
-                /*
-                response in
-                    switch response.result {
-                    case .success(let value):
-                        let courses = Brewery.getBreweries(from: value)
-                        completion(.success(courses))
-                    case .failure(let error):
-                        completion(.failure(error))
-                    }
-                 */
-            
     }
     
     private func updateUI() {
@@ -104,6 +81,22 @@ extension BreweryTableViewController {
 
         cityLabel.title = "\(breweries.first?.city ?? "N/A") (\(stateCode))"
     }
+    
+    
+    private func cityErrorAlertControler(with title: String, and message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK",
+                                     style: .default) { [self] _ in
+            dismiss(animated: false)
+        }
+        
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+    
     
     private func getStateCode(for state: String) -> String {
         switch state {
