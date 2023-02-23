@@ -26,14 +26,6 @@ struct Brewery: Decodable {
     
     static func getBreweries(from value: Any) -> [Brewery] {
         guard let breweriesData = value as? [[String: Any]] else {return []}
-        /*
-        var breweries: [Brewery] = []
-        for eachBrevery in breweriesData {
-            let brewery = Brewery(breweryData: eachBrevery)
-            breweries.append(brewery)
-        }
-        return breweries
-        */
         return breweriesData.compactMap { Brewery(breweryData: $0)}
     }
 }
