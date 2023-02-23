@@ -73,14 +73,8 @@ extension BreweryTableViewController {
             .responseJSON { [weak self] dataResponce in
                 switch dataResponce.result {
                 case .success(let value):
-                    guard let breweriesData = value as? [[String: Any]] else {return}
-                    
-                    for each in breweriesData {
-                        let brewery = Brewery(breweryData: each)
-                        self?.breweries.append(brewery)
-                    }
+                    self?.breweries = Brewery.getBreweries(from: value)
                     self?.tableView.reloadData()
-                    
                 case .failure(let error):
                     print(error)
                 }

@@ -16,10 +16,11 @@ class BreweryCell: UITableViewCell {
     
     func configure(with brewery: Brewery) {
         breweryNameLabel.text = brewery.name
-        streetLabel.text = "address: \(brewery.street ?? "N/A"), \(brewery.postal_code ?? "")"
+        streetLabel.text = "\(brewery.street ?? "N/A"), \(brewery.postal_code ?? "")"
+        webPageLabel.textColor = UIColor.blue
+        webPageLabel.text = "\(brewery.website_url ?? "N/A")"
         phoneLabel.textColor = UIColor.orange
         phoneLabel.font = UIFont.boldSystemFont(ofSize: 14)
         phoneLabel.text = "phone: \(brewery.phone ?? "N/A")"
-        webPageLabel.text = "web: \(brewery.website_url ?? "N/A")"
     }
 }

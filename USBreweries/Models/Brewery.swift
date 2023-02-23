@@ -23,4 +23,16 @@ struct Brewery: Decodable {
         phone = breweryData["phone"] as? String
         website_url = breweryData["website_url"] as? String
     }
+    
+    static func getBreweries(from value: Any) -> [Brewery] {
+        guard let breweriesData = value as? [[String: Any]] else {return []}
+        var breweries: [Brewery] = []
+        
+        for eachBrevery in breweriesData {
+            let brewery = Brewery(breweryData: eachBrevery)
+            breweries.append(brewery)
+        }
+        
+        return breweries
+    }
 }
