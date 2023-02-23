@@ -51,22 +51,19 @@ final class BreweryTableViewController: UITableViewController {
 extension BreweryTableViewController {
     
     func fetchBreweries() {
-        NetworkManager.shared.fetchBreweries(for: city) { [self] result in
+        NetworkManager.shared.fetchBreweries(for: city) { [weak self] result in
             switch result {
             case .success(let breweries):
-                print(breweries.first?.city ?? "N/A")
                
-                
-                if city != breweries.first?.city {
-                    cityErrorAlertControler(with: "Can't find \"\(self.city ?? "")\" city",
-                                            and: "Please, enter correct city name")
-                    
-                    return
+                if self?.city != breweries.first?.city {
+                    self?.cityErrorAlertControler(with: "Can't find \"\(self?.city ?? "")\" city",
+                                                  and: "Please, enter correct city name")
                 }
-                 
                 
-                self.breweries = breweries
-                self.tableView.reloadData()
+                self?.cityLabel.title = "\(breweries.first?.city ?? self?.city ?? "N/A")"
+                 
+                self?.breweries = breweries
+                self?.tableView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -89,7 +86,8 @@ extension BreweryTableViewController {
                                       preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "OK",
-                                     style: .default) { [self] _ in
+                                     style: .default)
+        { [self] _ in
             dismiss(animated: false)
         }
         
