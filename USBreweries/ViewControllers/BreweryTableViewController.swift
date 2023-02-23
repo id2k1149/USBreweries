@@ -76,15 +76,7 @@ extension BreweryTableViewController {
                     guard let breweriesData = value as? [[String: Any]] else {return}
                     
                     for each in breweriesData {
-                        let brewery = Brewery(
-                            name: each["name"] as? String,
-                            street: each["street"] as? String,
-                            city: each["city"] as? String,
-                            state:each["state"] as? String,
-                            postal_code: each["postal_code"] as? String,
-                            phone: each["phone"] as? String,
-                            website_url: each["website_url"] as? String
-                        )
+                        let brewery = Brewery(breweryData: each)
                         self?.breweries.append(brewery)
                     }
                     self?.tableView.reloadData()

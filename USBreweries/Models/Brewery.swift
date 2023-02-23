@@ -6,19 +6,21 @@
 //
 
 struct Brewery: Decodable {
-//    let id: String?
     let name: String?
-//    let brewery_type: String?
     let street: String?
     let city: String?
     let state: String?
     let postal_code: String?
-//    let country: String?
-//    let longitude: String?
-//    let latitude: String?
     let phone: String?
     let website_url: String?
-//    let updated_at: String?
-//    let created_at: String?
     
+    init(breweryData: [String: Any]) {
+        name = breweryData["name"] as? String
+        street = breweryData["street"] as? String
+        city = breweryData["city"] as? String
+        state = breweryData["state"] as? String
+        postal_code = breweryData["postal_code"] as? String
+        phone = breweryData["phone"] as? String
+        website_url = breweryData["website_url"] as? String
+    }
 }
