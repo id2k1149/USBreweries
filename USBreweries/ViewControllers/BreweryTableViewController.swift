@@ -50,20 +50,50 @@ final class BreweryTableViewController: UITableViewController {
 // MARK: - Extensions
 extension BreweryTableViewController {
     
-    func fetchBreweries() {
-        NetworkManager.shared.fetchBreweries(for: city) { [weak self] result in
+    private func fetchBreweries() {
+        NetworkManager.shared.fetchBreweries(for: city) {result in
             switch result {
             case .success(let breweries):
+                self.cityLabel.title = "\(breweries.first?.city ?? self.city ?? "N/A")"
                
-                if self?.city != breweries.first?.city {
-                    self?.cityErrorAlertControler(with: "Can't find \"\(self?.city ?? "")\" city",
+                if self.city != breweries.first?.city {
+                    self.cityErrorAlertControler(with: "Can't find \"\(self.city ?? "")\" city",
                                                   and: "Please, enter correct city name")
                 }
                 
-                self?.cityLabel.title = "\(breweries.first?.city ?? self?.city ?? "N/A")"
-                 
-                self?.breweries = breweries
-                self?.tableView.reloadData()
+                var states: [String] = []
+                
+                breweries.forEach { brewery in
+                    
+                    if !states.contains(brewery.state ?? "N/A") {
+                        states.append(brewery.state ?? "N/A")
+                    }
+                }
+                
+                if states.count > 1 {
+                    self.selectStateAlertController(states: states,
+                                               city: self.city ?? "N/A") { state in
+                        
+                        self.breweries = breweries.filter { $0.state == state }
+                        self.tableView.reloadData()
+
+                        
+                        /*
+                        guard let city = breweriesUS.first?.city as? String else {return}
+                        
+                        let stateSplitAndJoin = state.split(separator: " ").joined(separator: "%20")
+                        
+                        let url = "https://api.openbrewerydb.org/breweries?by_city=\(city)&by_state=\(stateSplitAndJoin)"
+                        
+                        networkManagerfetchesBreweries(forURL: url) { [self] breweriesUS in
+                            performSegue(withIdentifier: "navigationControllerID", sender: breweriesUS)
+                        }
+                         */
+                    }
+                } else {
+                    self.breweries = breweries
+                    self.tableView.reloadData()
+                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -94,6 +124,29 @@ extension BreweryTableViewController {
         alert.addAction(okAction)
         present(alert, animated: true)
     }
+    
+    
+    private func selectStateAlertController(states: [String],
+                                            city: String,
+                                            completionHandler: @escaping(String) -> Void ) {
+        
+        let alertController = UIAlertController(title: "A few states have \(city) city",
+                                                message: "Please choose one state",
+                                                preferredStyle: .alert)
+        
+        for state in states {
+            let action = UIAlertAction(title: state, style: .default, handler: { (action) in
+                completionHandler(state)
+            })
+            alertController.addAction(action)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     
     
     private func getStateCode(for state: String) -> String {

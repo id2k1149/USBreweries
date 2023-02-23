@@ -135,7 +135,6 @@ extension MainViewController {
             guard let cityName = textField?.text else { return }
             
             if cityName != "" {
-//                let city = cityName.split(separator: " ").joined(separator: "%20")
                 completionHandler(cityName)
             }
         }
@@ -147,30 +146,4 @@ extension MainViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    
-    
-    /*
-    private func selectStateAlertController(states: [String],
-                                            city: String,
-                                            completionHandler: @escaping(String) -> Void ) {
-        
-        let alertController = UIAlertController(title: "A few states have \(city) city",
-                                                message: "Please choose one state",
-                                                preferredStyle: .alert)
-        
-        for state in states {
-            let action = UIAlertAction(title: state, style: .default, handler: { (action) in
-                completionHandler(state)
-            })
-            alertController.addAction(action)
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: nil)
-    }
-    */
-    
-   
 }
