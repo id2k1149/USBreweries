@@ -19,8 +19,12 @@ class BreweryCell: UITableViewCell {
         streetLabel.text = "\(brewery.street ?? "N/A"), \(brewery.postal_code ?? "")"
         webPageLabel.textColor = UIColor.blue
         webPageLabel.text = "\(brewery.website_url ?? "N/A")"
-        phoneLabel.textColor = UIColor.orange
         phoneLabel.font = UIFont.boldSystemFont(ofSize: 14)
         phoneLabel.text = "phone: \(brewery.phone ?? "N/A")"
+        
+//        if let labelText = myLabel.text, let url = URL(string: labelText) {
+//            // Use the URL object here
+//        }
+
     }
 }

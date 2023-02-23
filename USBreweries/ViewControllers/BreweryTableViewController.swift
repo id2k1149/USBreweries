@@ -12,7 +12,6 @@ final class BreweryTableViewController: UITableViewController {
     // MARK: - @IBOutlet
     @IBOutlet weak var cityLabel: UINavigationItem!
     
-//    var breweries: [Brewery]!
     var city: String!
     private var breweries: [Brewery] = []
 
@@ -20,8 +19,6 @@ final class BreweryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 110
-//        updateUI()
-       
         fetchBreweries()
     }
 
@@ -51,13 +48,13 @@ final class BreweryTableViewController: UITableViewController {
 extension BreweryTableViewController {
     
     private func fetchBreweries() {
-        NetworkManager.shared.fetchBreweries(for: city) {result in
+        NetworkManager.shared.fetchBreweries(for: city) { [self] result in
+            
             switch result {
             case .success(let breweries):
-                self.cityLabel.title = "\(breweries.first?.city ?? self.city ?? "N/A")"
                
-                if self.city != breweries.first?.city {
-                    self.cityErrorAlertControler(with: "Can't find \"\(self.city ?? "")\" city",
+                if city != breweries.first?.city {
+                    cityErrorAlertControler(with: "Can't find \"\(city ?? "")\" city",
                                                   and: "Please, enter correct city name")
                 }
                 
@@ -71,26 +68,27 @@ extension BreweryTableViewController {
                 }
                 
                 if states.count > 1 {
+                    cityLabel.title = "\(city ?? "") (??)"
+                    
                     self.selectStateAlertController(states: states,
-                                               city: self.city ?? "N/A") { state in
+                                                    city: self.city ?? "N/A") { [self] state in
                         
                         self.breweries = breweries.filter { $0.state == state }
+                        let stateCode = getStateCode(for: self.breweries
+                            .first?
+                            .state
+                            ?? "??")
+                        cityLabel.title = "\(self.breweries.first?.city ?? "") (\(stateCode))"
                         self.tableView.reloadData()
-
-                        
-                        /*
-                        guard let city = breweriesUS.first?.city as? String else {return}
-                        
-                        let stateSplitAndJoin = state.split(separator: " ").joined(separator: "%20")
-                        
-                        let url = "https://api.openbrewerydb.org/breweries?by_city=\(city)&by_state=\(stateSplitAndJoin)"
-                        
-                        networkManagerfetchesBreweries(forURL: url) { [self] breweriesUS in
-                            performSegue(withIdentifier: "navigationControllerID", sender: breweriesUS)
-                        }
-                         */
                     }
                 } else {
+                    let stateCode = getStateCode(for: breweries
+                        .first?
+                        .state
+                        ?? "??")
+
+                    cityLabel.title = "\(breweries.first?.city ?? city ?? "Can't find your city") (\(stateCode))"
+                
                     self.breweries = breweries
                     self.tableView.reloadData()
                 }
@@ -99,16 +97,6 @@ extension BreweryTableViewController {
             }
         }
     }
-    
-    private func updateUI() {
-        let stateCode = getStateCode(for: breweries
-            .first?
-            .state
-            ?? "N/A")
-
-        cityLabel.title = "\(breweries.first?.city ?? "N/A") (\(stateCode))"
-    }
-    
     
     private func cityErrorAlertControler(with title: String, and message: String) {
         let alert = UIAlertController(title: title,
@@ -150,111 +138,111 @@ extension BreweryTableViewController {
     
     
     private func getStateCode(for state: String) -> String {
-        switch state {
-        case "Alabama":
+        switch state.lowercased() {
+        case "alabama":
             return "AL"
-        case "Alaska":
+        case "alaska":
             return "AK"
-        case "Arizona":
+        case "arizona":
             return "AZ"
-        case "Arkansas":
+        case "arkansas":
             return "AR"
-        case "California":
+        case "california":
             return "CA"
-        case "Colorado":
+        case "colorado":
             return "CO"
-        case "Connecticut":
+        case "connecticut":
             return "CT"
-        case "Delaware":
+        case "delaware":
             return "DE"
-        case "District of Columbia":
+        case "district of columbia":
             return "DC"
-        case "Florida":
+        case "florida":
             return "FL"
-        case "Georgia":
+        case "georgia":
             return "GA"
-        case "Hawaii":
+        case "hawaii":
             return "HI"
-        case "Idaho":
+        case "idaho":
             return "ID"
-        case "Illinois":
+        case "illinois":
             return "IL"
-        case "Indiana":
+        case "indiana":
             return "IN"
-        case "Iowa":
+        case "iowa":
             return "IA"
-        case "Kansas":
+        case "kansas":
             return "KS"
-        case "Kentucky":
+        case "kentucky":
             return "KY"
         case "Louisiana":
             return "LA"
-        case "Maine":
+        case "maine":
             return "ME"
-        case "Maryland":
+        case "maryland":
             return "MD"
-        case "Massachusetts":
+        case "massachusetts":
             return "MA"
-        case "Michigan":
+        case "michigan":
             return "MI"
-        case "Minnesota":
+        case "minnesota":
             return "MN"
-        case "Mississippi":
+        case "mississippi":
             return "MS"
-        case "Missouri":
+        case "missouri":
             return "MO"
-        case "Montana":
+        case "montana":
             return "MT"
-        case "Nebraska":
+        case "nebraska":
             return "NE"
-        case "Nevada":
+        case "nevada":
             return "NV"
-        case "New Hampshire":
+        case "new hampshire":
             return "NH"
-        case "New Jersey":
+        case "new jersey":
             return "NJ"
-        case "New Mexico":
+        case "new mexico":
             return "NM"
-        case "New York":
+        case "new york":
             return "NY"
-        case "North Carolina":
+        case "north carolina":
             return "NC"
-        case "North Dakota":
+        case "north dakota":
             return "ND"
-        case "Ohio":
+        case "ohio":
             return "OH"
-        case "Oklahoma":
+        case "oklahoma":
             return "OK"
-        case "Oregon":
+        case "oregon":
             return "OR"
-        case "Pennsylvania":
+        case "pennsylvania":
             return "PA"
-        case "Rhode Island":
+        case "rhode island":
             return "RI"
-        case "South Carolina":
+        case "south carolina":
             return "SC"
-        case "South Dakota":
+        case "south dakota":
             return "SD"
-        case "Tennessee":
+        case "tennessee":
             return "TN"
-        case "Texas":
+        case "texas":
             return "TX"
-        case "Utah":
+        case "utah":
             return "UT"
-        case "Vermont":
+        case "vermont":
             return "VT"
-        case "Virginia":
+        case "virginia":
             return "VA"
-        case "Washington":
+        case "washington":
             return "WA"
-        case "West Virginia":
+        case "west virginia":
             return "WV"
-        case "Wisconsin":
+        case "wisconsin":
             return "WI"
-        case "Wyoming":
+        case "wyoming":
             return "WY"
         default:
-            return "N/A"
+            return "??"
         }
     }
 }

@@ -12,9 +12,6 @@ final class MainViewController: UIViewController {
     // MARK: - @IBOutlet
     @IBOutlet weak var startScreenView: UIView!
     
-    //    private var breweriesList: [Brewery] = []
-    
-    
     // MARK: - Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,87 +24,30 @@ final class MainViewController: UIViewController {
         
         guard let breweryTableVC = navigationVC.topViewController as? BreweryTableViewController
         else { return }
-        
-//        guard let breweries = sender as? [Brewery] else { return }
-//        breweryTableVC.breweries = breweries
-        
+
         guard let cityName = sender as? String else { return }
         breweryTableVC.city = cityName
     }
     
     // MARK: - @IBAction
-    
     @IBAction func searchButtonTapped(_ sender: UIButton) {
-        self.citySearchAlertController(withTitle: "Enter US city name",
-                                       message: nil,
-                                       style: .alert) {[unowned self] city in
+        citySearchAlertController(withTitle: "Enter US city name",
+                                  message: nil,
+                                  style: .alert) {[unowned self] city in
             
             performSegue(withIdentifier: "navigationControllerID", sender: city)
             
-            /*
-            let url = "https://api.openbrewerydb.org/breweries?by_city=\(city)"
-            networkManagerfetchesBreweries(forURL: url) { [self] breweriesUS in
-                
-                let citySplitAndJoin = city.split(separator: "%20").joined(separator: " ")
-                
-                if breweriesUS.first?.city != citySplitAndJoin {
-                    cityErrorAlertControler(with: "Can't find \"\(citySplitAndJoin)\" city",
-                                            and: "Please, enter correct city name")
-                    return
-                }
-                
-                /*
-                var states: [String] = []
-                
-                breweriesUS.forEach { brewery in
-                    
-                    if !states.contains(brewery.state ?? "N/A") {
-                        states.append(brewery.state ?? "N/A")
-                    }
-                }
-                
-                if states.count > 1 {
-                    selectStateAlertController(states: states,
-                                               city: city) {[unowned self] state in
-                        
-                        guard let city = breweriesUS.first?.city as? String else {return}
-                        
-                        let stateSplitAndJoin = state.split(separator: " ").joined(separator: "%20")
-                        
-                        let url = "https://api.openbrewerydb.org/breweries?by_city=\(city)&by_state=\(stateSplitAndJoin)"
-                        
-                        networkManagerfetchesBreweries(forURL: url) { [self] breweriesUS in
-                            performSegue(withIdentifier: "navigationControllerID", sender: breweriesUS)
-                        }
-                    }
-                }
-                */
-                
-                performSegue(withIdentifier: "navigationControllerID", sender: breweriesUS)
-            }
-            */
         }
     }
 }
 
 // MARK: - Extensions
-
 extension MainViewController {
     
     private func updateUI() {
         guard let background = UIImage(named: "screen-background") else { return }
         startScreenView.backgroundColor = UIColor(patternImage: background)
     }
-    
-    /*
-    private func networkManagerfetchesBreweries(forURL url: String,
-                                                completion: @escaping([Brewery]) -> Void)  {
-        
-        NetworkManager.shared.fetchBreweries(forURL: url) { breweriesUS in
-            completion(breweriesUS)
-        }
-    }
-     */
     
     private func citySearchAlertController(withTitle title: String?,
                                       message: String?,
