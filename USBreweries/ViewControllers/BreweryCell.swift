@@ -20,7 +20,7 @@ class BreweryCell: UITableViewCell {
         phoneLabel.font = UIFont.boldSystemFont(ofSize: 14)
         phoneLabel.text = "phone: \(brewery.phone ?? "N/A")"
         
-        let linkString = "\(brewery.website_url ?? "N/A")"
+        let linkString = "\(brewery.website_url ?? "web page is not available")"
         let attributedString = NSMutableAttributedString(string: linkString)
         let range = NSRange(location: 0, length: attributedString.length)
         let linkAttributes: [NSAttributedString.Key: Any] = [
