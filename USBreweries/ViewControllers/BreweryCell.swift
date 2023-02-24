@@ -17,6 +17,8 @@ class BreweryCell: UITableViewCell {
     func configure(with brewery: Brewery) {
         breweryNameLabel.text = brewery.name
         streetLabel.text = "\(brewery.street ?? "N/A"), \(brewery.postal_code ?? "")"
+        phoneLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        phoneLabel.text = "phone: \(brewery.phone ?? "N/A")"
         
         let linkString = "\(brewery.website_url ?? "N/A")"
         let attributedString = NSMutableAttributedString(string: linkString)
@@ -29,12 +31,9 @@ class BreweryCell: UITableViewCell {
         attributedString.addAttributes(linkAttributes, range: range)
         webPageLabel.attributedText = attributedString
         webPageLabel.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelTapped(_:)))
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(labelTapped(_:)))
         webPageLabel.addGestureRecognizer(tapGesture)
-
-        phoneLabel.font = UIFont.boldSystemFont(ofSize: 14)
-        phoneLabel.text = "phone: \(brewery.phone ?? "N/A")"
-        
     }
     
     @objc func labelTapped(_ sender: UITapGestureRecognizer) {

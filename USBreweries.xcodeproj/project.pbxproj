@@ -66,6 +66,7 @@
 		502622732937A3D200B5AD11 /* USBreweries */ = {
 			isa = PBXGroup;
 			children = (
+				5060F39529A90B3F00F0B63E /* Services */,
 				50EEF2182937A6CF00F61B85 /* Models */,
 				50EEF2172937A6BC00F61B85 /* ViewControllers */,
 				50EEF2162937A6AB00F61B85 /* Storyboards */,
@@ -74,6 +75,14 @@
 				502622822937A3D300B5AD11 /* Info.plist */,
 			);
 			path = USBreweries;
+			sourceTree = "<group>";
+		};
+		5060F39529A90B3F00F0B63E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				50A7CF802950FD8200EDB39E /* NetworkManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		50EEF2152937A69400F61B85 /* Delegates */ = {
@@ -108,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				50EEF2192937A6FC00F61B85 /* Brewery.swift */,
-				50A7CF802950FD8200EDB39E /* NetworkManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
